@@ -1,9 +1,10 @@
 import "./App.css";
-import { Carto } from "./components/map/map";
+import { Carto, Intro } from "./components";
 
 function App() {
   return (
     <>
+      <Intro />
       <Carto />
     </>
   );

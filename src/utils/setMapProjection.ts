@@ -3,7 +3,7 @@ import { FeatureCollection } from "geojson";
 
 export const setMapProjection = function (mapData: FeatureCollection) {
   // use the geoAlbers map projection
-  const projection = d3.geoAlbers();
+  const projection = d3.geoTransverseMercator();
   // adjust projection to fit area of map canvas
   projection.precision(0).fitExtent(
     [
