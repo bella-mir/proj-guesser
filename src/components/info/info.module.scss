@@ -1,0 +1,21 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 1rem;
+
+  .title {
+    font-weight: 600;
+    font-size: 32px;
+  }
+
+  .block {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 0.5rem;
+    .categoryName {
+      font-weight: 600;
+    }
+  }
+}

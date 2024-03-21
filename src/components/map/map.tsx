@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
-import {
-  geoNaturalEarth1,
-  geoOrthographic,
-  geoPath,
-  geoGraticule,
-} from "d3-geo";
+import { geoNaturalEarth1, geoPath, geoGraticule } from "d3-geo";
 import { GeoProjection } from "d3";
+import Select from "antd/es/select";
+import { PROJECTIONS_OPTIONS } from "./map-constants";
 
 export const Carto: React.FC = () => {
   const [projection, setProjection] = useState<GeoProjection>(geoNaturalEarth1);
-  const [worldMapData, setWorldMapData] = useState<unknown>(null);
+  const [worldMapData, setWorldMapData] = useState<unknown>(undefined);
 
   useEffect(() => {
     const fetchWorldMapData = async () => {
@@ -27,7 +24,7 @@ export const Carto: React.FC = () => {
     fetchWorldMapData();
   }, []);
 
-  const changeProjection = (newProjection: () => GeoProjection) => {
+  const changeProjection = (newProjection: GeoProjection) => {
     setProjection(newProjection);
   };
 
@@ -46,12 +43,6 @@ export const Carto: React.FC = () => {
       <svg width={width} height={height}>
         {/* Draw world map */}
         <path
-          d={pathGenerator(worldMapData)}
-          fill="#b3daff"
-          stroke="#0059b3"
-          strokeWidth={0.5}
-        />
-        <path
           d={pathGenerator(graticule())}
           fill="none"
           stroke="#ccc"
@@ -59,14 +50,20 @@ export const Carto: React.FC = () => {
           strokeLinecap="round"
           strokeLinejoin="round"
         />
+        <path
+          d={pathGenerator(worldMapData)}
+          fill="#b3daff"
+          stroke="#0059b3"
+          strokeWidth={0.5}
+        />
       </svg>
       <div>
-        <button onClick={() => changeProjection(geoNaturalEarth1)}>
-          Natural Earth
-        </button>
-        <button onClick={() => changeProjection(geoOrthographic)}>
-          Orthographic
-        </button>
+        <Select
+          style={{ width: 200 }}
+          options={PROJECTIONS_OPTIONS}
+          defaultValue={PROJECTIONS_OPTIONS[0].value}
+          onChange={(value: GeoProjection) => changeProjection(value)}
+        />
       </div>
     </div>
   );

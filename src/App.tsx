@@ -1,11 +1,14 @@
 import "./App.css";
-import { Carto, Intro } from "./components";
+import { Carto, Info, Intro } from "./components";
 
 function App() {
   return (
     <>
       <Intro />
-      <Carto />
+      <div className="content">
+        <Carto />
+        <Info />
+      </div>
     </>
   );
 }

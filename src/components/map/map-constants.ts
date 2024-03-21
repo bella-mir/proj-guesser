@@ -248,12 +248,12 @@ export const PROJECTIONS = [
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
-    name: "Gilbert",
-    projection: d3proj.geoGilbert,
-    type: "Azimuthal",
-    property: "Conformal",
-  },
+  // {
+  //   name: "Gilbert",
+  //   projection: d3proj.geoGilbert,
+  //   type: "Azimuthal",
+  //   property: "Conformal",
+  // },
   {
     name: "Gingery",
     projection: d3proj.geoGingery,
@@ -579,24 +579,24 @@ export const PROJECTIONS = [
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
-    name: "Polyhedral Butterfly",
-    projection: d3proj.geoPolyhedralButterfly,
-    type: "Polyhedral",
-    property: "Equidistant",
-  },
-  {
-    name: "Polyhedral Collignon",
-    projection: d3proj.geoPolyhedralCollignon,
-    type: "Polyhedral",
-    property: "Equidistant",
-  },
-  {
-    name: "Polyhedral Waterman",
-    projection: d3proj.geoPolyhedralWaterman,
-    type: "Polyhedral",
-    property: "Equidistant",
-  },
+  // {
+  //   name: "Polyhedral Butterfly",
+  //   projection: d3proj.geoPolyhedralButterfly,
+  //   type: "Polyhedral",
+  //   property: "Equidistant",
+  // },
+  // {
+  //   name: "Polyhedral Collignon",
+  //   projection: d3proj.geoPolyhedralCollignon,
+  //   type: "Polyhedral",
+  //   property: "Equidistant",
+  // },
+  // {
+  //   name: "Polyhedral Waterman",
+  //   projection: d3proj.geoPolyhedralWaterman,
+  //   type: "Polyhedral",
+  //   property: "Equidistant",
+  // },
   {
     name: "Peirce Quincuncial",
     projection: d3proj.geoPeirceQuincuncial,
@@ -604,6 +604,11 @@ export const PROJECTIONS = [
     property: "Conformal",
   },
 ];
+
+export const PROJECTIONS_OPTIONS = PROJECTIONS.map((projection) => ({
+  label: projection.name,
+  value: projection.projection,
+}));
 
 //   , s0 = [{
 //     name: "Azimuthal",
