@@ -1,4 +1,5 @@
 import * as d3 from "d3";
+//@ts-expect-error: no types
 import * as d3proj from "d3-geo-projection";
 
 export const PROJECTIONS = [

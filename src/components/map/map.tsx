@@ -43,6 +43,7 @@ export const Carto: React.FC = () => {
       <svg width={width} height={height}>
         {/* Draw world map */}
         <path
+          //@ts-expect-error: type error
           d={pathGenerator(graticule())}
           fill="none"
           stroke="#ccc"
@@ -51,6 +52,7 @@ export const Carto: React.FC = () => {
           strokeLinejoin="round"
         />
         <path
+          //@ts-expect-error: type error
           d={pathGenerator(worldMapData)}
           fill="#b3daff"
           stroke="#0059b3"
