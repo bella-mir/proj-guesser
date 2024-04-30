@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { geoNaturalEarth1, geoPath, geoGraticule } from "d3-geo";
-import { GeoProjection } from "d3";
-import Select from "antd/es/select";
-import { PROJECTIONS_OPTIONS } from "./map-constants";
+import React, { useState, useEffect, useMemo, useContext } from "react";
+import { geoPath, geoGraticule } from "d3-geo";
+import { PROJECTIONS } from "./map-constants";
+import { MapContext } from "../../mapContext";
 
 export const Carto: React.FC = () => {
-  const [projection, setProjection] = useState<GeoProjection>(geoNaturalEarth1);
+  const { currentProjection, setCurrentProjection } = useContext(MapContext);
   const [worldMapData, setWorldMapData] = useState<unknown>(undefined);
 
   useEffect(() => {
@@ -24,14 +23,14 @@ export const Carto: React.FC = () => {
     fetchWorldMapData();
   }, []);
 
-  const changeProjection = (newProjection: GeoProjection) => {
-    setProjection(newProjection);
-  };
+  const projGeo = useMemo(() => {
+    return PROJECTIONS[currentProjection]?.projection;
+  }, [currentProjection]);
 
   const width = 1000;
   const height = 500;
 
-  const pathGenerator = geoPath().projection(projection);
+  const pathGenerator = geoPath().projection(projGeo);
   const graticule = geoGraticule();
 
   if (!worldMapData) {
@@ -39,34 +38,35 @@ export const Carto: React.FC = () => {
   }
 
   return (
-    <div>
-      <svg width={width} height={height}>
-        {/* Draw world map */}
-        <path
-          //@ts-expect-error: type error
-          d={pathGenerator(graticule())}
-          fill="none"
-          stroke="#ccc"
-          strokeWidth={0.5}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          //@ts-expect-error: type error
-          d={pathGenerator(worldMapData)}
-          fill="#b3daff"
-          stroke="#0059b3"
-          strokeWidth={0.5}
-        />
-      </svg>
+    <>
       <div>
-        <Select
-          style={{ width: 200 }}
-          options={PROJECTIONS_OPTIONS}
-          defaultValue={PROJECTIONS_OPTIONS[0].value}
-          onChange={(value: GeoProjection) => changeProjection(value)}
-        />
+        <svg width={width} height={height}>
+          <clipPath id={"clipPathId"}>
+            <path
+              //@ts-expect-error: type error
+              d={pathGenerator({ type: "Sphere" })}
+            />
+          </clipPath>
+          <path
+            //@ts-expect-error: type error
+            d={pathGenerator(graticule())}
+            fill="none"
+            stroke="#ccc"
+            strokeWidth={0.5}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            clipPath="url(#clipPathId)"
+          />
+          <path
+            //@ts-expect-error: type error
+            d={pathGenerator(worldMapData)}
+            fill="#2D4B73"
+            stroke="white"
+            strokeWidth={0.5}
+            clipPath="url(#clipPathId)"
+          />
+        </svg>
       </div>
-    </div>
+    </>
   );
 };

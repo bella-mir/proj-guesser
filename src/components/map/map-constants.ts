@@ -1,615 +1,1213 @@
 import * as d3 from "d3";
+import { GeoProjection } from "d3";
 //@ts-expect-error: no types
 import * as d3proj from "d3-geo-projection";
 
-export const PROJECTIONS = [
-  {
+type TProj = {
+  name: string;
+  projection: GeoProjection;
+  type: string;
+  property: string;
+};
+
+interface IProjectionCollection {
+  [key: string]: TProj;
+}
+
+export const PROJECTIONS: IProjectionCollection = {
+  azimuthalequalarea: {
     name: "Azimuthal Equal Area",
-    projection: d3.geoAzimuthalEqualArea,
+    projection: d3.geoAzimuthalEqualArea(),
     type: "Azimuthal",
     property: "Equal-area",
   },
-  {
+  azimuthalequidistant: {
     name: "Azimuthal Equidistant",
-    projection: d3.geoAzimuthalEquidistant,
+    projection: d3.geoAzimuthalEquidistant(),
     type: "Azimuthal",
     property: "Equidistant",
   },
-  {
+  gnomonic: {
     name: "Gnomonic",
-    projection: d3.geoGnomonic,
+    projection: d3.geoGnomonic(),
     type: "Azimuthal",
     property: "Gnomonic",
   },
-  {
+  orthographic: {
     name: "Orthographic",
-    projection: d3.geoOrthographic,
+    projection: d3.geoOrthographic(),
     type: "Azimuthal",
     property: "Perspective",
   },
-  {
+  stereographic: {
     name: "Stereographic",
-    projection: d3.geoStereographic,
+    projection: d3.geoStereographic(),
     type: "Azimuthal",
     property: "Conformal",
   },
-  {
+  equalearth: {
     name: "Equal Earth",
-    projection: d3.geoEqualEarth,
+    projection: d3.geoEqualEarth(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  albersusa: {
     name: "Albers Usa",
-    projection: d3.geoAlbersUsa,
+    projection: d3.geoAlbersUsa(),
     type: "Conic",
     property: "Equal-area",
   },
-  {
+  albers: {
     name: "Albers",
-    projection: d3.geoAlbers,
+    projection: d3.geoAlbers(),
     type: "Conic",
     property: "Equal-area",
   },
-  {
+  conicequalarea: {
     name: "Conic Equal Area",
-    projection: d3.geoConicEqualArea,
+    projection: d3.geoConicEqualArea(),
     type: "Conic",
     property: "Equal-area",
   },
-  {
+  conicequidistant: {
     name: "Conic Equidistant",
-    projection: d3.geoConicEquidistant,
+    projection: d3.geoConicEquidistant(),
     type: "Conic",
     property: "Equidistant",
   },
-  {
+  equirectangular: {
     name: "Equirectangular",
-    projection: d3.geoEquirectangular,
+    projection: d3.geoEquirectangular(),
     type: "Cylindrical",
     property: "Equidistant",
   },
-  {
+  mercator: {
     name: "Mercator",
-    projection: d3.geoMercator,
+    projection: d3.geoMercator(),
     type: "Cylindrical",
     property: "Conformal",
   },
-  {
+  transversemercator: {
     name: "Transverse Mercator",
-    projection: d3.geoTransverseMercator,
+    projection: d3.geoTransverseMercator(),
     type: "Cylindrical",
     property: "Conformal",
   },
-  {
+  naturalearth1: {
     name: "Natural Earth1",
-    projection: d3.geoNaturalEarth1,
+    projection: d3.geoNaturalEarth1(),
     type: "Pseudocylindrical",
     property: "Compromise",
   },
-  {
+  airy: {
     name: "Airy",
-    projection: d3proj.geoAiry,
+    projection: d3proj.geoAiry(),
     type: "Azimuthal",
     property: "Compromise",
   },
-  {
+  aitoff: {
     name: "Aitoff",
-    projection: d3proj.geoAitoff,
+    projection: d3proj.geoAitoff(),
     type: "Pseudoazimuthal",
     property: "Compromise",
   },
-  {
+  armadillo: {
     name: "Armadillo",
-    projection: d3proj.geoArmadillo,
+    projection: d3proj.geoArmadillo(),
     type: "Other",
     property: "Compromise",
   },
-  {
+  august: {
     name: "August",
-    projection: d3proj.geoAugust,
+    projection: d3proj.geoAugust(),
     type: "Other",
     property: "Conformal",
   },
-  {
+  baker: {
     name: "Baker",
-    projection: d3proj.geoBaker,
+    projection: d3proj.geoBaker(),
     type: "Pseudocylindrical",
     property: "Compromise",
   },
-  {
+  berghaus: {
     name: "Berghaus",
-    projection: d3proj.geoBerghaus,
+    projection: d3proj.geoBerghaus(),
     type: "Azimuthal",
     property: "Equidistant",
   },
-  {
+  bertin1953: {
     name: "Bertin1953",
-    projection: d3proj.geoBertin1953,
+    projection: d3proj.geoBertin1953(),
     type: "Other",
     property: "Compromise",
   },
-  {
+  boggs: {
     name: "Boggs",
-    projection: d3proj.geoBoggs,
+    projection: d3proj.geoBoggs(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  bonne: {
     name: "Bonne",
-    projection: d3proj.geoBonne,
+    projection: d3proj.geoBonne(),
     type: "Pseudoconical",
     property: "Equal-area",
   },
-  {
+  bottomley: {
     name: "Bottomley",
-    projection: d3proj.geoBottomley,
+    projection: d3proj.geoBottomley(),
     type: "Pseudoconical",
     property: "Equal-area",
   },
-  {
+  bromley: {
     name: "Bromley",
-    projection: d3proj.geoBromley,
+    projection: d3proj.geoBromley(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  chamberlinafrica: {
     name: "Chamberlin Africa",
-    projection: d3proj.geoChamberlinAfrica,
+    projection: d3proj.geoChamberlinAfrica(),
     type: "Trimetric",
     property: "Other",
   },
-  {
+  collignon: {
     name: "Collignon",
-    projection: d3proj.geoCollignon,
+    projection: d3proj.geoCollignon(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  craig: {
     name: "Craig",
-    projection: d3proj.geoCraig,
+    projection: d3proj.geoCraig(),
     type: "Retroazimuthal",
     property: "Compromise",
   },
-  {
+  craster: {
     name: "Craster",
-    projection: d3proj.geoCraster,
+    projection: d3proj.geoCraster(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  cylindricalequalarea: {
     name: "CylindricalEqualArea",
-    projection: d3proj.geoCylindricalEqualArea,
+    projection: d3proj.geoCylindricalEqualArea(),
     type: "Cylindrical",
     property: "Equal-area",
   },
-  {
+  cylindricalstereographic: {
     name: "CylindricalStereographic",
-    projection: d3proj.geoCylindricalStereographic,
+    projection: d3proj.geoCylindricalStereographic(),
     type: "Cylindrical",
     property: "Conformal",
   },
-  {
+  eckert1: {
     name: "Eckert1",
-    projection: d3proj.geoEckert1,
+    projection: d3proj.geoEckert1(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  eckert2: {
     name: "Eckert2",
-    projection: d3proj.geoEckert2,
+    projection: d3proj.geoEckert2(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  eckert3: {
     name: "Eckert3",
-    projection: d3proj.geoEckert3,
+    projection: d3proj.geoEckert3(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  eckert4: {
     name: "Eckert4",
-    projection: d3proj.geoEckert4,
+    projection: d3proj.geoEckert4(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  eckert5: {
     name: "Eckert5",
-    projection: d3proj.geoEckert5,
+    projection: d3proj.geoEckert5(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  eckert6: {
     name: "Eckert6",
-    projection: d3proj.geoEckert6,
+    projection: d3proj.geoEckert6(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  eisenlohr: {
     name: "Eisenlohr",
-    projection: d3proj.geoEisenlohr,
+    projection: d3proj.geoEisenlohr(),
     type: "Other",
     property: "Conformal",
   },
-  {
+  fahey: {
     name: "Fahey",
-    projection: d3proj.geoFahey,
+    projection: d3proj.geoFahey(),
     type: "Pseudocylindrical",
     property: "Other",
   },
-  {
+  foucaut: {
     name: "Foucaut",
-    projection: d3proj.geoFoucaut,
+    projection: d3proj.geoFoucaut(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  foucautsinusoidal: {
     name: "Foucaut Sinusoidal",
-    projection: d3proj.geoFoucautSinusoidal,
+    projection: d3proj.geoFoucautSinusoidal(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  // {
-  //   name: "Gilbert",
-  //   projection: d3proj.geoGilbert,
-  //   type: "Azimuthal",
-  //   property: "Conformal",
-  // },
-  {
+  gingery: {
     name: "Gingery",
-    projection: d3proj.geoGingery,
+    projection: d3proj.geoGingery(),
     type: "Azimuthal",
     property: "Equidistant",
   },
-  {
+  ginzburg4: {
     name: "Ginzburg4",
-    projection: d3proj.geoGinzburg4,
+    projection: d3proj.geoGinzburg4(),
     type: "Lenticular",
     property: "Compromise",
   },
-  {
+  ginzburg5: {
     name: "Ginzburg5",
-    projection: d3proj.geoGinzburg5,
+    projection: d3proj.geoGinzburg5(),
     type: "Lenticular",
     property: "Compromise",
   },
-  {
+  ginzburg6: {
     name: "Ginzburg6",
-    projection: d3proj.geoGinzburg6,
+    projection: d3proj.geoGinzburg6(),
     type: "Lenticular",
     property: "Compromise",
   },
-  {
+  ginzburg8: {
     name: "Ginzburg8",
-    projection: d3proj.geoGinzburg8,
+    projection: d3proj.geoGinzburg8(),
     type: "Lenticular",
     property: "Compromise",
   },
-  {
+  ginzburg9: {
     name: "Ginzburg9",
-    projection: d3proj.geoGinzburg9,
+    projection: d3proj.geoGinzburg9(),
     type: "Lenticular",
     property: "Compromise",
   },
-  {
+  gringorten: {
     name: "Gringorten",
-    projection: d3proj.geoGringorten,
+    projection: d3proj.geoGringorten(),
     type: "Other",
     property: "Equal-area",
   },
-  {
+  guyou: {
     name: "Guyou",
-    projection: d3proj.geoGuyou,
+    projection: d3proj.geoGuyou(),
     type: "Other",
     property: "Conformal",
   },
-  {
+  hammer: {
     name: "Hammer",
-    projection: d3proj.geoHammer,
+    projection: d3proj.geoHammer(),
     type: "Pseudoazimuthal",
     property: "Equal-area",
   },
-  {
+  hammerretroazimuthal: {
     name: "Hammer Retroazimuthal",
-    projection: d3proj.geoHammerRetroazimuthal,
+    projection: d3proj.geoHammerRetroazimuthal(),
     type: "Retroazimuthal",
     property: "Other",
   },
-  {
+  healpix: {
     name: "Healpix",
-    projection: d3proj.geoHealpix,
+    projection: d3proj.geoHealpix(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  hill: {
     name: "Hill",
-    projection: d3proj.geoHill,
+    projection: d3proj.geoHill(),
     type: "Pseudoconical",
     property: "Equal-area",
   },
-  {
+  homolosine: {
     name: "Homolosine",
-    projection: d3proj.geoHomolosine,
+    projection: d3proj.geoHomolosine(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  hufnagel: {
     name: "Hufnagel",
-    projection: d3proj.geoHufnagel,
+    projection: d3proj.geoHufnagel(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  hyperelliptical: {
     name: "Hyperelliptical",
-    projection: d3proj.geoHyperelliptical,
+    projection: d3proj.geoHyperelliptical(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  kavrayskiy7: {
     name: "Kavrayskiy7",
-    projection: d3proj.geoKavrayskiy7,
+    projection: d3proj.geoKavrayskiy7(),
     type: "Pseudocylindrical",
     property: "Compromise",
   },
-  {
+  lagrange: {
     name: "Lagrange",
-    projection: d3proj.geoLagrange,
+    projection: d3proj.geoLagrange(),
     type: "Other",
     property: "Conformal",
   },
-  {
+  larrivee: {
     name: "Larrivee",
-    projection: d3proj.geoLarrivee,
+    projection: d3proj.geoLarrivee(),
     type: "Other",
     property: "Compromise",
   },
-  {
+  laskowski: {
     name: "Laskowski",
-    projection: d3proj.geoLaskowski,
+    projection: d3proj.geoLaskowski(),
     type: "Other",
     property: "Compromise",
   },
-  {
+  loximuthal: {
     name: "Loximuthal",
-    projection: d3proj.geoLoximuthal,
+    projection: d3proj.geoLoximuthal(),
     type: "Pseudocylindrical",
     property: "Compromise",
   },
-  {
+  miller: {
     name: "Miller",
-    projection: d3proj.geoMiller,
+    projection: d3proj.geoMiller(),
     type: "Cylindrical",
     property: "Compromise",
   },
-  {
+  modifiedstereographicalaska: {
     name: "Modified Stereographic Alaska",
-    projection: d3proj.geoModifiedStereographicAlaska,
+    projection: d3proj.geoModifiedStereographicAlaska(),
     type: "Azimuthal",
     property: "Conformal",
   },
-  {
+  modifiedstereographicgs48: {
     name: "Modified Stereographic Gs48",
-    projection: d3proj.geoModifiedStereographicGs48,
+    projection: d3proj.geoModifiedStereographicGs48(),
     type: "Azimuthal",
     property: "Conformal",
   },
-  {
+  modifiedstereographicgs50: {
     name: "Modified Stereographic Gs50",
-    projection: d3proj.geoModifiedStereographicGs50,
+    projection: d3proj.geoModifiedStereographicGs50(),
     type: "Azimuthal",
     property: "Conformal",
   },
-  {
+  modifiedstereographicmiller: {
     name: "Modified Stereographic Miller",
-    projection: d3proj.geoModifiedStereographicMiller,
+    projection: d3proj.geoModifiedStereographicMiller(),
     type: "Azimuthal",
     property: "Conformal",
   },
-  {
+  modifiedstereographiclee: {
     name: "Modified Stereographic Lee",
-    projection: d3proj.geoModifiedStereographicLee,
+    projection: d3proj.geoModifiedStereographicLee(),
     type: "Azimuthal",
     property: "Conformal",
   },
-  {
+  mollweide: {
     name: "Mollweide",
-    projection: d3proj.geoMollweide,
+    projection: d3proj.geoMollweide(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  mtflatpolarparabolic: {
     name: "Mt Flat Polar Parabolic",
-    projection: d3proj.geoMtFlatPolarParabolic,
+    projection: d3proj.geoMtFlatPolarParabolic(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  mtflatpolarquartic: {
     name: "Mt Flat Polar Quartic",
-    projection: d3proj.geoMtFlatPolarQuartic,
+    projection: d3proj.geoMtFlatPolarQuartic(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  mtflatpolarsinusoidal: {
     name: "Mt Flat Polar Sinusoidal",
-    projection: d3proj.geoMtFlatPolarSinusoidal,
+    projection: d3proj.geoMtFlatPolarSinusoidal(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  naturalearth2: {
     name: "Natural Earth 2",
-    projection: d3proj.geoNaturalEarth2,
+    projection: d3proj.geoNaturalEarth2(),
     type: "Pseudocylindrical",
     property: "Compromise",
   },
-  {
+  nellhammer: {
     name: "Nell Hammer",
-    projection: d3proj.geoNellHammer,
+    projection: d3proj.geoNellHammer(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  nicolosi: {
     name: "Nicolosi",
-    projection: d3proj.geoNicolosi,
+    projection: d3proj.geoNicolosi(),
     type: "Pseudoconical",
     property: "Compromise",
   },
-  {
+  patterson: {
     name: "Patterson",
-    projection: d3proj.geoPatterson,
+    projection: d3proj.geoPatterson(),
     type: "Cylindrical",
     property: "Compromise",
   },
-  {
+  polyconic: {
     name: "Polyconic",
-    projection: d3proj.geoPolyconic,
+    projection: d3proj.geoPolyconic(),
     type: "Polyconic",
     property: "Other",
   },
-  {
+  rectangularpolyconic: {
     name: "Rectangular Polyconic",
-    projection: d3proj.geoRectangularPolyconic,
+    projection: d3proj.geoRectangularPolyconic(),
     type: "Polyconic",
     property: "Other",
   },
-  {
+  robinson: {
     name: "Robinson",
-    projection: d3proj.geoRobinson,
+    projection: d3proj.geoRobinson(),
     type: "Pseudocylindrical",
     property: "Compromise",
   },
-  {
+  satellite: {
     name: "Satellite",
-    projection: d3proj.geoSatellite,
+    projection: d3proj.geoSatellite(),
     type: "Other",
     property: "Other",
   },
-  {
+  sinusoidal: {
     name: "Sinusoidal",
-    projection: d3proj.geoSinusoidal,
+    projection: d3proj.geoSinusoidal(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  sinumollweide: {
     name: "Sinu Mollweide",
-    projection: d3proj.geoSinuMollweide,
+    projection: d3proj.geoSinuMollweide(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  times: {
     name: "Times",
-    projection: d3proj.geoTimes,
+    projection: d3proj.geoTimes(),
     type: "Pseudocylindrical",
     property: "Compromise",
   },
-  {
+  twopointazimuthalusa: {
     name: "Two Point Azimuthal Usa",
-    projection: d3proj.geoTwoPointAzimuthalUsa,
+    projection: d3proj.geoTwoPointAzimuthalUsa(),
     type: "Azimuthal",
     property: "Equidistant",
   },
-  {
+  vandergrinten2: {
     name: "Van Der Grinten 2",
-    projection: d3proj.geoVanDerGrinten2,
+    projection: d3proj.geoVanDerGrinten2(),
     type: "Other",
     property: "Compromise",
   },
-  {
+  vandergrinten3: {
     name: "Van Der Grinten 3",
-    projection: d3proj.geoVanDerGrinten3,
+    projection: d3proj.geoVanDerGrinten3(),
     type: "Other",
     property: "Compromise",
   },
-  {
+  wagner: {
     name: "Wagner",
-    projection: d3proj.geoWagner,
+    projection: d3proj.geoWagner(),
     type: "Azimuthal",
     property: "Equidistant",
   },
-  {
+  wagner4: {
     name: "Wagner4",
-    projection: d3proj.geoWagner4,
+    projection: d3proj.geoWagner4(),
     type: "Pseudocylindrical",
     property: "Compromise",
   },
-  {
+  wagner6: {
     name: "Wagner6",
-    projection: d3proj.geoWagner6,
+    projection: d3proj.geoWagner6(),
     type: "Pseudocylindrical",
     property: "Compromise",
   },
-  {
+  wagner7: {
     name: "Wagner7",
-    projection: d3proj.geoWagner7,
+    projection: d3proj.geoWagner7(),
     type: "Pseudoazimuthal",
     property: "Equal-area",
   },
-  {
+  winkel3: {
     name: "Winkel 3",
-    projection: d3proj.geoWinkel3,
+    projection: d3proj.geoWinkel3(),
     type: "Pseudoazimuthal",
     property: "Compromise",
   },
-
-  {
+  interruptedhomolosine: {
     name: "Interrupted Homolosine",
-    projection: d3proj.geoInterruptedHomolosine,
+    projection: d3proj.geoInterruptedHomolosine(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  interruptedsinusoidal: {
     name: "Interrupted Sinusoidal",
-    projection: d3proj.geoInterruptedSinusoidal,
+    projection: d3proj.geoInterruptedSinusoidal(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  interruptedmollweide: {
     name: "Interrupted Mollweide",
-    projection: d3proj.geoInterruptedMollweide,
+    projection: d3proj.geoInterruptedMollweide(),
     type: "Pseudocylindrical",
     property: "Equidistant",
   },
-  {
+  interruptedsinumollweide: {
     name: "Interrupted Sinu Mollweide",
-    projection: d3proj.geoInterruptedSinuMollweide,
+    projection: d3proj.geoInterruptedSinuMollweide(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  {
+  interruptedmollweidehemispheres: {
     name: "Interrupted Mollweide Hemispheres",
-    projection: d3proj.geoInterruptedMollweideHemispheres,
+    projection: d3proj.geoInterruptedMollweideHemispheres(),
     type: "Pseudocylindrical",
     property: "Equal-area",
   },
-  // {
-  //   name: "Polyhedral Butterfly",
-  //   projection: d3proj.geoPolyhedralButterfly,
-  //   type: "Polyhedral",
-  //   property: "Equidistant",
-  // },
-  // {
-  //   name: "Polyhedral Collignon",
-  //   projection: d3proj.geoPolyhedralCollignon,
-  //   type: "Polyhedral",
-  //   property: "Equidistant",
-  // },
-  // {
-  //   name: "Polyhedral Waterman",
-  //   projection: d3proj.geoPolyhedralWaterman,
-  //   type: "Polyhedral",
-  //   property: "Equidistant",
-  // },
-  {
+  peircequincuncial: {
     name: "Peirce Quincuncial",
-    projection: d3proj.geoPeirceQuincuncial,
+    projection: d3proj.geoPeirceQuincuncial(),
     type: "Quincuncial",
     property: "Conformal",
   },
-];
+};
 
-export const PROJECTIONS_OPTIONS = PROJECTIONS.map((projection) => ({
-  label: projection.name,
-  value: projection.projection,
-}));
+export const PROJECTIONS_OPTIONS = Object.entries(PROJECTIONS).map(
+  ([key, projection]) => ({
+    label: projection.name,
+    value: key,
+  })
+);
+
+// export const PROJECTIONS = [
+//   {
+//     name: "Azimuthal Equal Area",
+//     projection: d3.geoAzimuthalEqualArea,
+//     type: "Azimuthal",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Azimuthal Equidistant",
+//     projection: d3.geoAzimuthalEquidistant,
+//     type: "Azimuthal",
+//     property: "Equidistant",
+//   },
+//   {
+//     name: "Gnomonic",
+//     projection: d3.geoGnomonic,
+//     type: "Azimuthal",
+//     property: "Gnomonic",
+//   },
+//   {
+//     name: "Orthographic",
+//     projection: d3.geoOrthographic,
+//     type: "Azimuthal",
+//     property: "Perspective",
+//   },
+//   {
+//     name: "Stereographic",
+//     projection: d3.geoStereographic,
+//     type: "Azimuthal",
+//     property: "Conformal",
+//   },
+//   {
+//     name: "Equal Earth",
+//     projection: d3.geoEqualEarth,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Albers Usa",
+//     projection: d3.geoAlbersUsa,
+//     type: "Conic",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Albers",
+//     projection: d3.geoAlbers,
+//     type: "Conic",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Conic Equal Area",
+//     projection: d3.geoConicEqualArea,
+//     type: "Conic",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Conic Equidistant",
+//     projection: d3.geoConicEquidistant,
+//     type: "Conic",
+//     property: "Equidistant",
+//   },
+//   {
+//     name: "Equirectangular",
+//     projection: d3.geoEquirectangular,
+//     type: "Cylindrical",
+//     property: "Equidistant",
+//   },
+//   {
+//     name: "Mercator",
+//     projection: d3.geoMercator,
+//     type: "Cylindrical",
+//     property: "Conformal",
+//   },
+//   {
+//     name: "Transverse Mercator",
+//     projection: d3.geoTransverseMercator,
+//     type: "Cylindrical",
+//     property: "Conformal",
+//   },
+//   {
+//     name: "Natural Earth1",
+//     projection: d3.geoNaturalEarth1,
+//     type: "Pseudocylindrical",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Airy",
+//     projection: d3proj.geoAiry,
+//     type: "Azimuthal",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Aitoff",
+//     projection: d3proj.geoAitoff,
+//     type: "Pseudoazimuthal",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Armadillo",
+//     projection: d3proj.geoArmadillo,
+//     type: "Other",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "August",
+//     projection: d3proj.geoAugust,
+//     type: "Other",
+//     property: "Conformal",
+//   },
+//   {
+//     name: "Baker",
+//     projection: d3proj.geoBaker,
+//     type: "Pseudocylindrical",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Berghaus",
+//     projection: d3proj.geoBerghaus,
+//     type: "Azimuthal",
+//     property: "Equidistant",
+//   },
+//   {
+//     name: "Bertin1953",
+//     projection: d3proj.geoBertin1953,
+//     type: "Other",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Boggs",
+//     projection: d3proj.geoBoggs,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Bonne",
+//     projection: d3proj.geoBonne,
+//     type: "Pseudoconical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Bottomley",
+//     projection: d3proj.geoBottomley,
+//     type: "Pseudoconical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Bromley",
+//     projection: d3proj.geoBromley,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Chamberlin Africa",
+//     projection: d3proj.geoChamberlinAfrica,
+//     type: "Trimetric",
+//     property: "Other",
+//   },
+//   {
+//     name: "Collignon",
+//     projection: d3proj.geoCollignon,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Craig",
+//     projection: d3proj.geoCraig,
+//     type: "Retroazimuthal",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Craster",
+//     projection: d3proj.geoCraster,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "CylindricalEqualArea",
+//     projection: d3proj.geoCylindricalEqualArea,
+//     type: "Cylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "CylindricalStereographic",
+//     projection: d3proj.geoCylindricalStereographic,
+//     type: "Cylindrical",
+//     property: "Conformal",
+//   },
+//   {
+//     name: "Eckert1",
+//     projection: d3proj.geoEckert1,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Eckert2",
+//     projection: d3proj.geoEckert2,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Eckert3",
+//     projection: d3proj.geoEckert3,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Eckert4",
+//     projection: d3proj.geoEckert4,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Eckert5",
+//     projection: d3proj.geoEckert5,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Eckert6",
+//     projection: d3proj.geoEckert6,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Eisenlohr",
+//     projection: d3proj.geoEisenlohr,
+//     type: "Other",
+//     property: "Conformal",
+//   },
+//   {
+//     name: "Fahey",
+//     projection: d3proj.geoFahey,
+//     type: "Pseudocylindrical",
+//     property: "Other",
+//   },
+//   {
+//     name: "Foucaut",
+//     projection: d3proj.geoFoucaut,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Foucaut Sinusoidal",
+//     projection: d3proj.geoFoucautSinusoidal,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   // {
+//   //   name: "Gilbert",
+//   //   projection: d3proj.geoGilbert,
+//   //   type: "Azimuthal",
+//   //   property: "Conformal",
+//   // },
+//   {
+//     name: "Gingery",
+//     projection: d3proj.geoGingery,
+//     type: "Azimuthal",
+//     property: "Equidistant",
+//   },
+//   {
+//     name: "Ginzburg4",
+//     projection: d3proj.geoGinzburg4,
+//     type: "Lenticular",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Ginzburg5",
+//     projection: d3proj.geoGinzburg5,
+//     type: "Lenticular",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Ginzburg6",
+//     projection: d3proj.geoGinzburg6,
+//     type: "Lenticular",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Ginzburg8",
+//     projection: d3proj.geoGinzburg8,
+//     type: "Lenticular",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Ginzburg9",
+//     projection: d3proj.geoGinzburg9,
+//     type: "Lenticular",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Gringorten",
+//     projection: d3proj.geoGringorten,
+//     type: "Other",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Guyou",
+//     projection: d3proj.geoGuyou,
+//     type: "Other",
+//     property: "Conformal",
+//   },
+//   {
+//     name: "Hammer",
+//     projection: d3proj.geoHammer,
+//     type: "Pseudoazimuthal",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Hammer Retroazimuthal",
+//     projection: d3proj.geoHammerRetroazimuthal,
+//     type: "Retroazimuthal",
+//     property: "Other",
+//   },
+//   {
+//     name: "Healpix",
+//     projection: d3proj.geoHealpix,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Hill",
+//     projection: d3proj.geoHill,
+//     type: "Pseudoconical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Homolosine",
+//     projection: d3proj.geoHomolosine,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Hufnagel",
+//     projection: d3proj.geoHufnagel,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Hyperelliptical",
+//     projection: d3proj.geoHyperelliptical,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Kavrayskiy7",
+//     projection: d3proj.geoKavrayskiy7,
+//     type: "Pseudocylindrical",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Lagrange",
+//     projection: d3proj.geoLagrange,
+//     type: "Other",
+//     property: "Conformal",
+//   },
+//   {
+//     name: "Larrivee",
+//     projection: d3proj.geoLarrivee,
+//     type: "Other",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Laskowski",
+//     projection: d3proj.geoLaskowski,
+//     type: "Other",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Loximuthal",
+//     projection: d3proj.geoLoximuthal,
+//     type: "Pseudocylindrical",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Miller",
+//     projection: d3proj.geoMiller,
+//     type: "Cylindrical",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Modified Stereographic Alaska",
+//     projection: d3proj.geoModifiedStereographicAlaska,
+//     type: "Azimuthal",
+//     property: "Conformal",
+//   },
+//   {
+//     name: "Modified Stereographic Gs48",
+//     projection: d3proj.geoModifiedStereographicGs48,
+//     type: "Azimuthal",
+//     property: "Conformal",
+//   },
+//   {
+//     name: "Modified Stereographic Gs50",
+//     projection: d3proj.geoModifiedStereographicGs50,
+//     type: "Azimuthal",
+//     property: "Conformal",
+//   },
+//   {
+//     name: "Modified Stereographic Miller",
+//     projection: d3proj.geoModifiedStereographicMiller,
+//     type: "Azimuthal",
+//     property: "Conformal",
+//   },
+//   {
+//     name: "Modified Stereographic Lee",
+//     projection: d3proj.geoModifiedStereographicLee,
+//     type: "Azimuthal",
+//     property: "Conformal",
+//   },
+//   {
+//     name: "Mollweide",
+//     projection: d3proj.geoMollweide,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Mt Flat Polar Parabolic",
+//     projection: d3proj.geoMtFlatPolarParabolic,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Mt Flat Polar Quartic",
+//     projection: d3proj.geoMtFlatPolarQuartic,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Mt Flat Polar Sinusoidal",
+//     projection: d3proj.geoMtFlatPolarSinusoidal,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Natural Earth 2",
+//     projection: d3proj.geoNaturalEarth2,
+//     type: "Pseudocylindrical",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Nell Hammer",
+//     projection: d3proj.geoNellHammer,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Nicolosi",
+//     projection: d3proj.geoNicolosi,
+//     type: "Pseudoconical",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Patterson",
+//     projection: d3proj.geoPatterson,
+//     type: "Cylindrical",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Polyconic",
+//     projection: d3proj.geoPolyconic,
+//     type: "Polyconic",
+//     property: "Other",
+//   },
+//   {
+//     name: "Rectangular Polyconic",
+//     projection: d3proj.geoRectangularPolyconic,
+//     type: "Polyconic",
+//     property: "Other",
+//   },
+//   {
+//     name: "Robinson",
+//     projection: d3proj.geoRobinson,
+//     type: "Pseudocylindrical",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Satellite",
+//     projection: d3proj.geoSatellite,
+//     type: "Other",
+//     property: "Other",
+//   },
+//   {
+//     name: "Sinusoidal",
+//     projection: d3proj.geoSinusoidal,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Sinu Mollweide",
+//     projection: d3proj.geoSinuMollweide,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Times",
+//     projection: d3proj.geoTimes,
+//     type: "Pseudocylindrical",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Two Point Azimuthal Usa",
+//     projection: d3proj.geoTwoPointAzimuthalUsa,
+//     type: "Azimuthal",
+//     property: "Equidistant",
+//   },
+//   {
+//     name: "Van Der Grinten 2",
+//     projection: d3proj.geoVanDerGrinten2,
+//     type: "Other",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Van Der Grinten 3",
+//     projection: d3proj.geoVanDerGrinten3,
+//     type: "Other",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Wagner",
+//     projection: d3proj.geoWagner,
+//     type: "Azimuthal",
+//     property: "Equidistant",
+//   },
+//   {
+//     name: "Wagner4",
+//     projection: d3proj.geoWagner4,
+//     type: "Pseudocylindrical",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Wagner6",
+//     projection: d3proj.geoWagner6,
+//     type: "Pseudocylindrical",
+//     property: "Compromise",
+//   },
+//   {
+//     name: "Wagner7",
+//     projection: d3proj.geoWagner7,
+//     type: "Pseudoazimuthal",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Winkel 3",
+//     projection: d3proj.geoWinkel3,
+//     type: "Pseudoazimuthal",
+//     property: "Compromise",
+//   },
+
+//   {
+//     name: "Interrupted Homolosine",
+//     projection: d3proj.geoInterruptedHomolosine,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Interrupted Sinusoidal",
+//     projection: d3proj.geoInterruptedSinusoidal,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Interrupted Mollweide",
+//     projection: d3proj.geoInterruptedMollweide,
+//     type: "Pseudocylindrical",
+//     property: "Equidistant",
+//   },
+//   {
+//     name: "Interrupted Sinu Mollweide",
+//     projection: d3proj.geoInterruptedSinuMollweide,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   {
+//     name: "Interrupted Mollweide Hemispheres",
+//     projection: d3proj.geoInterruptedMollweideHemispheres,
+//     type: "Pseudocylindrical",
+//     property: "Equal-area",
+//   },
+//   // {
+//   //   name: "Polyhedral Butterfly",
+//   //   projection: d3proj.geoPolyhedralButterfly,
+//   //   type: "Polyhedral",
+//   //   property: "Equidistant",
+//   // },
+//   // {
+//   //   name: "Polyhedral Collignon",
+//   //   projection: d3proj.geoPolyhedralCollignon,
+//   //   type: "Polyhedral",
+//   //   property: "Equidistant",
+//   // },
+//   // {
+//   //   name: "Polyhedral Waterman",
+//   //   projection: d3proj.geoPolyhedralWaterman,
+//   //   type: "Polyhedral",
+//   //   property: "Equidistant",
+//   // },
+//   {
+//     name: "Peirce Quincuncial",
+//     projection: d3proj.geoPeirceQuincuncial,
+//     type: "Quincuncial",
+//     property: "Conformal",
+//   },
+// ];
+
+// export const PROJECTIONS_OPTIONS = PROJECTIONS.map((projection) => ({
+//   label: projection.name,
+//   value: projection.projection,
+// }));
 
 //   , s0 = [{
 //     name: "Azimuthal",
