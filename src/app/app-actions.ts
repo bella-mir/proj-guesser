@@ -6,3 +6,24 @@ export const setAppMode = createAction(
     payload,
   })
 );
+
+export const setQuizMode = createAction(
+  `appState/setQuizMode`,
+  (payload: "start" | "questions" | "results") => ({
+    payload,
+  })
+);
+
+export const setQuestionNumber = createAction(
+  `appState/setQuestionNumber`,
+  (payload: number) => ({
+    payload,
+  })
+);
+
+export const setQuestionType = createAction(
+  `appState/setQuestionType`,
+  (payload: "names" | "properties") => ({
+    payload,
+  })
+);

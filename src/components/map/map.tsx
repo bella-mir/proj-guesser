@@ -4,7 +4,7 @@ import { PROJECTIONS } from "./map-constants";
 import { MapContext } from "../../mapContext";
 
 export const Carto: React.FC = () => {
-  const { currentProjection, setCurrentProjection } = useContext(MapContext);
+  const { currentProjection } = useContext(MapContext);
   const [worldMapData, setWorldMapData] = useState<unknown>(undefined);
 
   useEffect(() => {

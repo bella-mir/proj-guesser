@@ -1,7 +1,7 @@
 import styles from "./intro.module.scss";
 import Radio, { RadioChangeEvent } from "antd/es/radio";
 import { useAppDispatch } from "../../app/app-types";
-import { setAppMode } from "../../app/app-actions";
+import { setAppMode, setQuizMode } from "../../app/app-actions";
 import { useSelector } from "react-redux";
 import { getAppMode } from "../../app/app-selectors";
 
@@ -16,6 +16,7 @@ export const Intro = () => {
 
   const onChange = ({ target: { value } }: RadioChangeEvent) => {
     dispatch(setAppMode(value));
+    dispatch(setQuizMode("start"));
   };
 
   return (

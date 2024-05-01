@@ -10,6 +10,7 @@ function App() {
       <MapContext.Provider value={{ currentProjection, setCurrentProjection }}>
         <Intro />
         <div className="content">
+          <></>
           <Carto />
           <Info />
         </div>

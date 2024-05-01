@@ -9,6 +9,9 @@ import { RootState } from "./store";
 
 export interface IAppState {
   appMode: "learn" | "quiz";
+  quizMode: "start" | "questions" | "results";
+  questionType: "names" | "properties";
+  questionNumber: number;
 }
 
 export type TAppState = {
