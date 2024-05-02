@@ -14,8 +14,17 @@
     flex-direction: column;
     text-align: left;
     gap: 0.5rem;
-    .categoryName {
-      font-weight: 600;
+    .blockHeader {
+      display: flex;
+      flex-direction: column;
+
+      .category {
+        font-size: 12px;
+        color: gray;
+      }
+      .categoryName {
+        font-weight: 600;
+      }
     }
   }
 }

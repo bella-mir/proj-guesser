@@ -1,0 +1,16 @@
+.content {
+  position: absolute;
+  display: flex;
+  overflow: hidden;
+  gap: 20px;
+  width: 70vw;
+  margin-top: 80px;
+}
+
+.map {
+  width: 60%;
+}
+
+.quiz {
+  width: 40%;
+}

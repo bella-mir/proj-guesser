@@ -1,0 +1,57 @@
+.content {
+  position: absolute;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  overflow: hidden;
+  gap: 20px;
+  width: 70vw;
+}
+
+.map {
+  width: 60%;
+}
+
+.info {
+  width: 40%;
+  height: 100%;
+}
+
+:global(.ant-select-single.ant-select-lg .ant-select-selector) {
+  font-size: 32px;
+  font-weight: 600;
+  font-family: Geometria;
+  color: blue;
+}
+
+.selector {
+  width: 520px;
+  margin-bottom: 40px;
+}
+
+:global(
+    .ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector
+  ) {
+  border: none;
+  background-color: lightblue;
+}
+
+:global(
+    .ant-select-single.ant-select-lg:not(.ant-select-customize-input)
+      .ant-select-selector
+  ) {
+  padding-right: 20px;
+}
+
+// :global(
+//     .ant-select-single.ant-select-lg.ant-select-show-arrow
+//       .ant-select-selection-item,
+//     .ant-select-single.ant-select-lg.ant-select-show-arrow
+//       .ant-select-selection-placeholder
+//   ) {
+//   padding-inline-end: 30px;
+// }
+
+:global(.ant-select .ant-select-arrow) {
+  color: rgba(0, 0, 0, 1);
+}

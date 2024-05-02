@@ -1,1 +1,0 @@
-export { QuizMode } from "./quizMode";

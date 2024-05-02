@@ -5,4 +5,4 @@ interface ContextState {
   setCurrentProjection: (value: string) => void;
 }
 
-export const MapContext = createContext({} as ContextState);
+export const LearnContext = createContext({} as ContextState);
