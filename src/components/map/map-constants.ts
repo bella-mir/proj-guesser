@@ -3,12 +3,34 @@ import { GeoProjection } from "d3";
 //@ts-expect-error: no types
 import * as d3proj from "d3-geo-projection";
 
+export type TProjType =
+  | "Azimuthal"
+  | "Pseudocylindrical"
+  | "Conic"
+  | "Pseudoconical"
+  | "Cylindrical"
+  | "Pseudoazimuthal"
+  | "Retroazimuthal"
+  | "Lenticular"
+  | "Polyconic"
+  | "Trimetric"
+  | "Other";
+
+export type TProjProperty =
+  | "Equal-area"
+  | "Equidistant"
+  | "Perspective"
+  | "Conformal"
+  | "Compromise"
+  | "Gnomonic"
+  | "Other";
+
 export type TProj = {
   id: string;
   name: string;
   projection: GeoProjection;
-  type: string;
-  property: string;
+  type: TProjType;
+  property: TProjProperty;
 };
 
 interface IProjectionCollection {
@@ -641,674 +663,57 @@ export const PROJECTIONS_OPTIONS = Object.entries(PROJECTIONS).map(
   })
 );
 
-// export const PROJECTIONS = [
-//   {
-//     name: "Azimuthal Equal Area",
-//     projection: d3.geoAzimuthalEqualArea,
-//     type: "Azimuthal",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Azimuthal Equidistant",
-//     projection: d3.geoAzimuthalEquidistant,
-//     type: "Azimuthal",
-//     property: "Equidistant",
-//   },
-//   {
-//     name: "Gnomonic",
-//     projection: d3.geoGnomonic,
-//     type: "Azimuthal",
-//     property: "Gnomonic",
-//   },
-//   {
-//     name: "Orthographic",
-//     projection: d3.geoOrthographic,
-//     type: "Azimuthal",
-//     property: "Perspective",
-//   },
-//   {
-//     name: "Stereographic",
-//     projection: d3.geoStereographic,
-//     type: "Azimuthal",
-//     property: "Conformal",
-//   },
-//   {
-//     name: "Equal Earth",
-//     projection: d3.geoEqualEarth,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Albers Usa",
-//     projection: d3.geoAlbersUsa,
-//     type: "Conic",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Albers",
-//     projection: d3.geoAlbers,
-//     type: "Conic",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Conic Equal Area",
-//     projection: d3.geoConicEqualArea,
-//     type: "Conic",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Conic Equidistant",
-//     projection: d3.geoConicEquidistant,
-//     type: "Conic",
-//     property: "Equidistant",
-//   },
-//   {
-//     name: "Equirectangular",
-//     projection: d3.geoEquirectangular,
-//     type: "Cylindrical",
-//     property: "Equidistant",
-//   },
-//   {
-//     name: "Mercator",
-//     projection: d3.geoMercator,
-//     type: "Cylindrical",
-//     property: "Conformal",
-//   },
-//   {
-//     name: "Transverse Mercator",
-//     projection: d3.geoTransverseMercator,
-//     type: "Cylindrical",
-//     property: "Conformal",
-//   },
-//   {
-//     name: "Natural Earth1",
-//     projection: d3.geoNaturalEarth1,
-//     type: "Pseudocylindrical",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Airy",
-//     projection: d3proj.geoAiry,
-//     type: "Azimuthal",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Aitoff",
-//     projection: d3proj.geoAitoff,
-//     type: "Pseudoazimuthal",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Armadillo",
-//     projection: d3proj.geoArmadillo,
-//     type: "Other",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "August",
-//     projection: d3proj.geoAugust,
-//     type: "Other",
-//     property: "Conformal",
-//   },
-//   {
-//     name: "Baker",
-//     projection: d3proj.geoBaker,
-//     type: "Pseudocylindrical",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Berghaus",
-//     projection: d3proj.geoBerghaus,
-//     type: "Azimuthal",
-//     property: "Equidistant",
-//   },
-//   {
-//     name: "Bertin1953",
-//     projection: d3proj.geoBertin1953,
-//     type: "Other",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Boggs",
-//     projection: d3proj.geoBoggs,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Bonne",
-//     projection: d3proj.geoBonne,
-//     type: "Pseudoconical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Bottomley",
-//     projection: d3proj.geoBottomley,
-//     type: "Pseudoconical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Bromley",
-//     projection: d3proj.geoBromley,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Chamberlin Africa",
-//     projection: d3proj.geoChamberlinAfrica,
-//     type: "Trimetric",
-//     property: "Other",
-//   },
-//   {
-//     name: "Collignon",
-//     projection: d3proj.geoCollignon,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Craig",
-//     projection: d3proj.geoCraig,
-//     type: "Retroazimuthal",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Craster",
-//     projection: d3proj.geoCraster,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "CylindricalEqualArea",
-//     projection: d3proj.geoCylindricalEqualArea,
-//     type: "Cylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "CylindricalStereographic",
-//     projection: d3proj.geoCylindricalStereographic,
-//     type: "Cylindrical",
-//     property: "Conformal",
-//   },
-//   {
-//     name: "Eckert1",
-//     projection: d3proj.geoEckert1,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Eckert2",
-//     projection: d3proj.geoEckert2,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Eckert3",
-//     projection: d3proj.geoEckert3,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Eckert4",
-//     projection: d3proj.geoEckert4,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Eckert5",
-//     projection: d3proj.geoEckert5,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Eckert6",
-//     projection: d3proj.geoEckert6,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Eisenlohr",
-//     projection: d3proj.geoEisenlohr,
-//     type: "Other",
-//     property: "Conformal",
-//   },
-//   {
-//     name: "Fahey",
-//     projection: d3proj.geoFahey,
-//     type: "Pseudocylindrical",
-//     property: "Other",
-//   },
-//   {
-//     name: "Foucaut",
-//     projection: d3proj.geoFoucaut,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Foucaut Sinusoidal",
-//     projection: d3proj.geoFoucautSinusoidal,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   // {
-//   //   name: "Gilbert",
-//   //   projection: d3proj.geoGilbert,
-//   //   type: "Azimuthal",
-//   //   property: "Conformal",
-//   // },
-//   {
-//     name: "Gingery",
-//     projection: d3proj.geoGingery,
-//     type: "Azimuthal",
-//     property: "Equidistant",
-//   },
-//   {
-//     name: "Ginzburg4",
-//     projection: d3proj.geoGinzburg4,
-//     type: "Lenticular",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Ginzburg5",
-//     projection: d3proj.geoGinzburg5,
-//     type: "Lenticular",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Ginzburg6",
-//     projection: d3proj.geoGinzburg6,
-//     type: "Lenticular",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Ginzburg8",
-//     projection: d3proj.geoGinzburg8,
-//     type: "Lenticular",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Ginzburg9",
-//     projection: d3proj.geoGinzburg9,
-//     type: "Lenticular",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Gringorten",
-//     projection: d3proj.geoGringorten,
-//     type: "Other",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Guyou",
-//     projection: d3proj.geoGuyou,
-//     type: "Other",
-//     property: "Conformal",
-//   },
-//   {
-//     name: "Hammer",
-//     projection: d3proj.geoHammer,
-//     type: "Pseudoazimuthal",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Hammer Retroazimuthal",
-//     projection: d3proj.geoHammerRetroazimuthal,
-//     type: "Retroazimuthal",
-//     property: "Other",
-//   },
-//   {
-//     name: "Healpix",
-//     projection: d3proj.geoHealpix,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Hill",
-//     projection: d3proj.geoHill,
-//     type: "Pseudoconical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Homolosine",
-//     projection: d3proj.geoHomolosine,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Hufnagel",
-//     projection: d3proj.geoHufnagel,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Hyperelliptical",
-//     projection: d3proj.geoHyperelliptical,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Kavrayskiy7",
-//     projection: d3proj.geoKavrayskiy7,
-//     type: "Pseudocylindrical",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Lagrange",
-//     projection: d3proj.geoLagrange,
-//     type: "Other",
-//     property: "Conformal",
-//   },
-//   {
-//     name: "Larrivee",
-//     projection: d3proj.geoLarrivee,
-//     type: "Other",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Laskowski",
-//     projection: d3proj.geoLaskowski,
-//     type: "Other",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Loximuthal",
-//     projection: d3proj.geoLoximuthal,
-//     type: "Pseudocylindrical",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Miller",
-//     projection: d3proj.geoMiller,
-//     type: "Cylindrical",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Modified Stereographic Alaska",
-//     projection: d3proj.geoModifiedStereographicAlaska,
-//     type: "Azimuthal",
-//     property: "Conformal",
-//   },
-//   {
-//     name: "Modified Stereographic Gs48",
-//     projection: d3proj.geoModifiedStereographicGs48,
-//     type: "Azimuthal",
-//     property: "Conformal",
-//   },
-//   {
-//     name: "Modified Stereographic Gs50",
-//     projection: d3proj.geoModifiedStereographicGs50,
-//     type: "Azimuthal",
-//     property: "Conformal",
-//   },
-//   {
-//     name: "Modified Stereographic Miller",
-//     projection: d3proj.geoModifiedStereographicMiller,
-//     type: "Azimuthal",
-//     property: "Conformal",
-//   },
-//   {
-//     name: "Modified Stereographic Lee",
-//     projection: d3proj.geoModifiedStereographicLee,
-//     type: "Azimuthal",
-//     property: "Conformal",
-//   },
-//   {
-//     name: "Mollweide",
-//     projection: d3proj.geoMollweide,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Mt Flat Polar Parabolic",
-//     projection: d3proj.geoMtFlatPolarParabolic,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Mt Flat Polar Quartic",
-//     projection: d3proj.geoMtFlatPolarQuartic,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Mt Flat Polar Sinusoidal",
-//     projection: d3proj.geoMtFlatPolarSinusoidal,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Natural Earth 2",
-//     projection: d3proj.geoNaturalEarth2,
-//     type: "Pseudocylindrical",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Nell Hammer",
-//     projection: d3proj.geoNellHammer,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Nicolosi",
-//     projection: d3proj.geoNicolosi,
-//     type: "Pseudoconical",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Patterson",
-//     projection: d3proj.geoPatterson,
-//     type: "Cylindrical",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Polyconic",
-//     projection: d3proj.geoPolyconic,
-//     type: "Polyconic",
-//     property: "Other",
-//   },
-//   {
-//     name: "Rectangular Polyconic",
-//     projection: d3proj.geoRectangularPolyconic,
-//     type: "Polyconic",
-//     property: "Other",
-//   },
-//   {
-//     name: "Robinson",
-//     projection: d3proj.geoRobinson,
-//     type: "Pseudocylindrical",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Satellite",
-//     projection: d3proj.geoSatellite,
-//     type: "Other",
-//     property: "Other",
-//   },
-//   {
-//     name: "Sinusoidal",
-//     projection: d3proj.geoSinusoidal,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Sinu Mollweide",
-//     projection: d3proj.geoSinuMollweide,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Times",
-//     projection: d3proj.geoTimes,
-//     type: "Pseudocylindrical",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Two Point Azimuthal Usa",
-//     projection: d3proj.geoTwoPointAzimuthalUsa,
-//     type: "Azimuthal",
-//     property: "Equidistant",
-//   },
-//   {
-//     name: "Van Der Grinten 2",
-//     projection: d3proj.geoVanDerGrinten2,
-//     type: "Other",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Van Der Grinten 3",
-//     projection: d3proj.geoVanDerGrinten3,
-//     type: "Other",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Wagner",
-//     projection: d3proj.geoWagner,
-//     type: "Azimuthal",
-//     property: "Equidistant",
-//   },
-//   {
-//     name: "Wagner4",
-//     projection: d3proj.geoWagner4,
-//     type: "Pseudocylindrical",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Wagner6",
-//     projection: d3proj.geoWagner6,
-//     type: "Pseudocylindrical",
-//     property: "Compromise",
-//   },
-//   {
-//     name: "Wagner7",
-//     projection: d3proj.geoWagner7,
-//     type: "Pseudoazimuthal",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Winkel 3",
-//     projection: d3proj.geoWinkel3,
-//     type: "Pseudoazimuthal",
-//     property: "Compromise",
-//   },
+// export const PROJECTION_TYPES: { [K in TProjType]: string } = {
+//   Azimuthal:
+//     "Azimuthal projections maintain accurate directionality from the center point of the projection. They are commonly used for maps centered on a specific location, such as polar maps or maps centered on a specific country or continent.",
+//   Pseudocylindrical:
+//     "Pseudocylindrical projections preserve either area or distance along the equator while distorting both as you move away from it. They are often used for world maps where accurate representation of areas is desired.",
+//   Conic:
+//     "Conic projections are made by placing a cone over the Earth and projecting the surface onto it. They are particularly useful for mapping mid-latitude regions with minimal distortion.",
+//   Cylindrical:
+//     "Cylindrical projections project the Earth's surface onto a cylinder. They are commonly used for world maps because they result in straight, horizontal lines of latitude and longitude.",
+//   Pseudoazimuthal:
+//     "Pseudoazimuthal projections maintain accurate directionality from one or two points on the map. They are often used for maps of large regions or continents.",
+//   Other:
+//     "This category includes projections that do not fit neatly into any of other categories or have unique properties.",
+// };
 
-//   {
-//     name: "Interrupted Homolosine",
-//     projection: d3proj.geoInterruptedHomolosine,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Interrupted Sinusoidal",
-//     projection: d3proj.geoInterruptedSinusoidal,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Interrupted Mollweide",
-//     projection: d3proj.geoInterruptedMollweide,
-//     type: "Pseudocylindrical",
-//     property: "Equidistant",
-//   },
-//   {
-//     name: "Interrupted Sinu Mollweide",
-//     projection: d3proj.geoInterruptedSinuMollweide,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   {
-//     name: "Interrupted Mollweide Hemispheres",
-//     projection: d3proj.geoInterruptedMollweideHemispheres,
-//     type: "Pseudocylindrical",
-//     property: "Equal-area",
-//   },
-//   // {
-//   //   name: "Polyhedral Butterfly",
-//   //   projection: d3proj.geoPolyhedralButterfly,
-//   //   type: "Polyhedral",
-//   //   property: "Equidistant",
-//   // },
-//   // {
-//   //   name: "Polyhedral Collignon",
-//   //   projection: d3proj.geoPolyhedralCollignon,
-//   //   type: "Polyhedral",
-//   //   property: "Equidistant",
-//   // },
-//   // {
-//   //   name: "Polyhedral Waterman",
-//   //   projection: d3proj.geoPolyhedralWaterman,
-//   //   type: "Polyhedral",
-//   //   property: "Equidistant",
-//   // },
-//   {
-//     name: "Peirce Quincuncial",
-//     projection: d3proj.geoPeirceQuincuncial,
-//     type: "Quincuncial",
-//     property: "Conformal",
-//   },
-// ];
+export const PROJECTION_TYPES: { [K in TProjType]: string } = {
+  Azimuthal:
+    "Azimuthal projections maintain accurate directionality from the center point of the projection. They are commonly used for maps centered on a specific location, such as polar maps or maps centered on a specific country or continent.",
+  Pseudocylindrical:
+    "Pseudocylindrical projections preserve either area or distance along the equator while distorting both as you move away from it. They are often used for world maps where accurate representation of areas is desired.",
+  Conic:
+    "Conic projections are made by placing a cone over the Earth and projecting the surface onto it. They are particularly useful for mapping mid-latitude regions with minimal distortion.",
+  Cylindrical:
+    "Cylindrical projections project the Earth's surface onto a cylinder. They are commonly used for world maps because they result in straight, horizontal lines of latitude and longitude.",
+  Pseudoazimuthal:
+    "Pseudoazimuthal projections maintain accurate directionality from one or two points on the map. They are often used for maps of large regions or continents.",
+  Pseudoconical:
+    "Pseudoconical projections maintain accurate directionality along specific lines or from particular points on the map. They combine aspects of both azimuthal and conic projections.",
+  Retroazimuthal:
+    "Retroazimuthal projections preserve accurate directionality from one or more selected points to all other points on the map. They are commonly used for navigational and military purposes.",
+  Lenticular:
+    "Lenticular projections are a type of pseudocylindrical projection that seeks to minimize distortion across the map by curving the meridians and parallels.",
+  Polyconic:
+    "Polyconic projections are characterized by straight meridians and curved parallels. They are commonly used for mapping large regions or countries with significant east-west extent.",
+  Trimetric:
+    "Trimetric projections are a type of trimetric projection characterized by the use of three different scales for the three principal directions. They are often used for specialized mapping purposes where specific areas or features require accurate representation.",
+  Other:
+    "This category includes projections that do not fit neatly into any of other categories or have unique properties.",
+};
 
-// export const PROJECTIONS_OPTIONS = PROJECTIONS.map((projection) => ({
-//   label: projection.name,
-//   value: projection.projection,
-// }));
-
-//   , s0 = [{
-//     name: "Azimuthal",
-//     description: "In standard presentation, azimuthal projections map meridians as straight lines and parallels as complete, concentric circles. They are radially symmetrical. In any presentation (or aspect), they preserve directions from the center point. This means great circles through the central point are represented by straight lines on the map."
-// }, {
-//     name: "Cylindrical",
-//     description: "In standard presentation, these map regularly-spaced meridians to equally spaced vertical lines, and parallels to horizontal lines."
-// }, {
-//     name: "Pseudocylindrical",
-//     description: "In standard presentation, these map the central meridian and parallels as straight lines. Other meridians are curves (or possibly straight from pole to equator), regularly spaced along parallels."
-// }, {
-//     name: "Conic",
-//     description: "In standard presentation, conic (or conical) projections map meridians as straight lines, and parallels as arcs of circles."
-// }, {
-//     name: "Pseudoconical",
-//     description: "In standard presentation, pseudoconical projections represent the central meridian as a straight line, other meridians as complex curves, and parallels as circular arcs."
-// }, {
-//     name: "Pseudoazimuthal",
-//     description: "In standard presentation, pseudoazimuthal projections map the equator and central meridian to perpendicular, intersecting straight lines. They map parallels to complex curves bowing away from the equator, and meridians to complex curves bowing in toward the central meridian. Listed here after pseudocylindrical as generally similar to them in shape and purpose."
-// }, {
-//     name: "Other",
-//     description: "Typically calculated from formula, and not based on a particular projection."
-// }, {
-//     name: "Polyhedral",
-//     description: "Polyhedral maps can be folded up into a polyhedral approximation to the sphere, using particular projection to map each face with low distortion."
-// }, {
-//     name: "Trimetric",
-//     description: "The Chamberlin trimetric projection is a map projection where three points are fixed on the globe and the points on the sphere are mapped onto a plane by triangulation."
-// }, {
-//     name: "Lenticular",
-//     description: "Lenticular projections are similar to the pseudocylindrics. But while those show straight parallels, in lenticular projections the parallels curve toward the poles."
-// }, {
-//     name: "Retroazimuthal",
-//     description: "Direction to a fixed location B (by the shortest route) corresponds to the direction on the map from A to B."
-// }, {
-//     name: "Polyconic",
-//     description: "Refers to those projections whose parallels are all non-concentric circular arcs, except for a straight equator, and the centers of these circles lie along a central axis. This description applies to projections in equatorial aspect."
-// }, {
-//     name: "Quincuncial",
-//     description: "The name quincuncial refers to this arrangement: the north pole at the center and quarters of the south pole in the corners form a quincunx pattern like the pips on the five face of a traditional die. The projection has the distinctive property that it forms a seamless square tiling of the plane, conformal except at four singular points along the equator."
-// }]
-//   , c0 = [{
-//     name: "Equal-area",
-//     description: "Area measure is conserved everywhere."
-// }, {
-//     name: "Conformal",
-//     description: "Preserves angles locally, implying that local shapes are not distorted and that local scale is constant in all directions from any chosen point."
-// }, {
-//     name: "Compromise",
-//     description: "Neither conformal nor equal-area, but a balance intended to reduce overall distortion."
-// }, {
-//     name: "Equidistant",
-//     description: "All distances from one (or two) points are correct. Other equidistant properties are mentioned in the notes."
-// }, {
-//     name: "Gnomonic",
-//     description: "All great circles are straight lines."
-// }, {
-//     name: "Other",
-//     description: "The projection is neither conformal nor equal-area."
-// }, {
-//     name: "Perspective",
-//     description: "The projection results from viewing the globe from some vantage point."
-// }];
+export const PROJECTIONS_PROPERTIES: { [K in TProjProperty]: string } = {
+  "Equal-area": "Preserves relative sizes of areas on the map.",
+  Equidistant:
+    "Preserves distances along certain lines or from certain points.",
+  Perspective:
+    "Simulates a three-dimensional perspective view of the Earth's surface.",
+  Conformal: "Preserves local shapes or angles.",
+  Compromise:
+    "Aims to balance various properties such as area, distance, and shape distortion.",
+  Gnomonic:
+    "The Gnomonic projection projects the Earth's surface onto a tangent plane from a single point, typically the center of the Earth. It is known for preserving great circles as straight lines, making it useful for navigational purposes but resulting in significant distortion away from the center point.",
+  Other:
+    "Projections that don't fall into the above categories or have unique characteristics.",
+};

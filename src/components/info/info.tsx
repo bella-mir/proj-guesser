@@ -1,7 +1,12 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { MapContext } from "../../mapContext";
 import styles from "./info.module.scss";
-import { PROJECTIONS, PROJECTIONS_OPTIONS } from "../map/map-constants";
+import {
+  PROJECTIONS,
+  PROJECTIONS_OPTIONS,
+  PROJECTIONS_PROPERTIES,
+  PROJECTION_TYPES,
+} from "../map/map-constants";
 import Select from "antd/es/select";
 import { useSelector } from "react-redux";
 import { getAppMode } from "../../app/app-selectors";
@@ -10,6 +15,10 @@ import { QuizMode } from "./componenets";
 export const Info = () => {
   const appMode = useSelector(getAppMode);
   const { currentProjection, setCurrentProjection } = useContext(MapContext);
+
+  const currentProjectionInfo = useMemo(() => {
+    return PROJECTIONS[currentProjection];
+  }, [currentProjection]);
 
   return (
     <>
@@ -24,22 +33,21 @@ export const Info = () => {
             />
           </div>
           <div className={styles.content}>
-            <span className={styles.title}>
-              {PROJECTIONS[currentProjection].name}
-            </span>
+            <span className={styles.title}>{currentProjectionInfo.name}</span>
 
             <div className={styles.block}>
               <span className={styles.categoryName}>
-                {PROJECTIONS[currentProjection].type}
+                {currentProjectionInfo.name}
               </span>
-              <span>Type description</span>
+              <span>{PROJECTION_TYPES[currentProjectionInfo.type]}</span>
             </div>
             <div className={styles.block}>
               <span className={styles.categoryName}>
-                {" "}
-                {PROJECTIONS[currentProjection].property}
+                {currentProjectionInfo.property}
               </span>
-              <span>Property description</span>
+              <span>
+                {PROJECTIONS_PROPERTIES[currentProjectionInfo.property]}
+              </span>
             </div>
           </div>
         </div>

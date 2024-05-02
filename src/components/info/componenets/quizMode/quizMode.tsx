@@ -169,12 +169,14 @@ export const QuizMode = () => {
                   />
                 </div>
                 <Button onClick={onButtonClickStart}>Start</Button>
-                <div>lalal</div>
               </div>
             );
           case "questions":
             return (
               <div className={styles.quizStart}>
+                <span>
+                  Question {questionCount + 1}/{questionNumber}
+                </span>
                 <h2>This projection is...</h2>
                 {projQuestions &&
                   projAnswers?.map((name) => (

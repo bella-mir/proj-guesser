@@ -32,12 +32,12 @@ export const getAnswers = ({
     const resultArray = [firstName, ...randomNames];
     return shuffleArray(resultArray);
   } else if (type === "properties") {
-    const firstProperty = `${array[element].type} // ${array[element].property}`;
+    const firstProperty = `${array[element].type} + ${array[element].property}`;
     const randomProperties: string[] = [];
 
     while (randomProperties.length < 3) {
       const randomIndex = Math.floor(Math.random() * array.length);
-      const randomProperty = `${array[randomIndex].type} // ${array[randomIndex].property}`;
+      const randomProperty = `${array[randomIndex].type} + ${array[randomIndex].property}`;
       if (
         !randomProperties.includes(randomProperty) &&
         randomProperty !== firstProperty
@@ -66,7 +66,7 @@ export const getRightAnswer = ({
     const firstName = array[element].name;
     return firstName;
   } else if (type === "properties" && array[element]) {
-    const firstProperty = `${array[element].type} // ${array[element].property}`;
+    const firstProperty = `${array[element].type} + ${array[element].property}`;
     return firstProperty;
   }
 };
