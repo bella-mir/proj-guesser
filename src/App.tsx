@@ -11,7 +11,11 @@ function App() {
           <Route
             path="/"
             element={
-              <PageWrapper children={<LearnPage />} title="Map Projections" />
+              <PageWrapper
+                children={<LearnPage />}
+                title="Map Projections"
+                main
+              />
             }
           />
           <Route

@@ -6,14 +6,18 @@ import { Footer } from "../footer";
 interface PageWrapperProps {
   title: string;
   children: ReactNode;
+  main?: boolean;
 }
 
-export const PageWrapper = ({ title, children }: PageWrapperProps) => {
+export const PageWrapper = ({ title, children, main }: PageWrapperProps) => {
   return (
     <div className={styles.page}>
       <Header />
-      <main className={styles.pageWrapper}>
-        <h1 className={styles.title}>{title}</h1>
+      <main className={styles.contentWrapper}>
+        <h1 className={`${styles.title} ${main ? styles.titleCentered : ""}`}>
+          {title}
+        </h1>
+
         <div className={styles.content}>{children}</div>
       </main>
       <Footer />

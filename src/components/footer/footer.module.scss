@@ -6,8 +6,13 @@
   left: 0;
   bottom: 0;
   padding: 24px 11.6% 24px 11.6%;
-  max-width: 984px;
-  box-sizing: content-box;
+  margin-left: -11.6%;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+  width: calc(100vw + 11.6%);
+  margin-top: auto;
+  // align-self: flex-end;
+  flex: none;
 }
 
 .footer {
@@ -15,6 +20,7 @@
   width: 100%;
   display: flex;
   align-items: end;
+  max-width: 984px;
 }
 
 .footer__copyright {

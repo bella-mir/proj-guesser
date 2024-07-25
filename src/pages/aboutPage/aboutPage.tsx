@@ -86,13 +86,19 @@ export const AboutPage = () => {
                 <a href="https://github.com/bella-mir" target="_blank">
                   GitHub
                 </a>
-                <span className={styles.author__separator}>|</span>
+                <span className={styles.author__separator}> | </span>
                 <a
                   href="https://www.linkedin.com/in/bella-mironova-64b01a222/"
                   target="_blank"
                 >
                   LinkedIn
                 </a>
+              </li>
+              <li>
+                <a href="https://github.com/bella-mir" target="_blank">
+                  GIS AND PEACE
+                </a>{" "}
+                Telegram Blog (in Russian)
               </li>
             </ul>
           </div>
