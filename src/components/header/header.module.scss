@@ -1,0 +1,55 @@
+/* Header */
+
+.header__wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(200, 200, 200, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.header {
+  width: 100%;
+  max-width: 984px;
+  opacity: 0.98;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.7% 11.6% 1% 11.6%;
+  // min-height: 42px;
+  min-width: 288px;
+}
+
+.header__current {
+  font-weight: 600;
+}
+
+.header__logo {
+  background-image: url("./asserts/geoPyLogo.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 30px;
+  padding: 0;
+}
+
+.header__list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 2rem;
+}
+
+.header__nav li {
+  display: inline;
+}
+
+.active {
+  font-weight: 600;
+}

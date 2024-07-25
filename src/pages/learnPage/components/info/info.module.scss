@@ -1,8 +1,10 @@
 .content {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   text-align: left;
-  gap: 1rem;
+  gap: 2rem;
+  justify-content: center;
+  min-width: 520px;
 
   .title {
     font-weight: 600;

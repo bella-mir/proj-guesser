@@ -3,28 +3,50 @@ import { geoPath, geoGraticule } from "d3-geo";
 import { PROJECTIONS } from "./map-constants";
 import landData from "../../data/land.json";
 
-export const Carto = ({ currentProjection }: { currentProjection: string }) => {
+export const Carto = ({
+  currentProjection,
+  scale = 1,
+}: {
+  currentProjection: string;
+  scale?: number;
+}) => {
   const projGeo = useMemo(() => {
-    return PROJECTIONS[currentProjection]?.projection
-      .scale(100)
-      .translate([250, 150]);
+    return PROJECTIONS[currentProjection]?.projection.translate([275, 200]);
   }, [currentProjection]);
 
-  const width = 500;
-  const height = 400;
+  const width = 550 / scale;
+  const height = 400 / scale;
 
   const pathGenerator = geoPath().projection(projGeo);
   const graticule = geoGraticule();
 
+  const svgStyle = {
+    verticalAlign: "top", // Align elements to the top
+  };
+
   return (
     <>
-      <svg width={width} height={height}>
+      <svg
+        width={width}
+        height={height}
+        viewBox={`0 0 ${width} ${height}`}
+        preserveAspectRatio="xMidYMid meet"
+        style={svgStyle}
+      >
         <clipPath id={"clipPathId"}>
           <path
             //@ts-expect-error: type error
             d={pathGenerator({ type: "Sphere" })}
           />
         </clipPath>
+        <rect
+          x={0}
+          y={0}
+          width={width}
+          height={height}
+          fill="#D8E3F2"
+          clipPath="url(#clipPathId)"
+        />
         <path
           //@ts-expect-error: type error
           d={pathGenerator(graticule())}
@@ -40,7 +62,7 @@ export const Carto = ({ currentProjection }: { currentProjection: string }) => {
           d={pathGenerator(landData)}
           fill="#2D4B73"
           stroke="white"
-          strokeWidth={0.5}
+          strokeWidth={0.2}
           clipPath="url(#clipPathId)"
         />
       </svg>

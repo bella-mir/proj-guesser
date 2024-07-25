@@ -1,2 +1,3 @@
-export { LearnMode } from "./learnMode";
-export { QuizMode } from "./quizMode";
+export { LearnPage } from "./learnPage";
+export { QuizPage } from "./quizPage";
+export { AboutPage } from "./aboutPage";

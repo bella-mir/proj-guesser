@@ -12,9 +12,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <ConfigProvider
         theme={{
           token: {
-            // colorPrimary: "#F08332",
+            colorPrimary: "#00a6a6",
             // colorLink: "#939598",
-            fontFamily: "Geometria, Arial",
+            fontFamily: "Poppins, Arial",
           },
         }}
       >

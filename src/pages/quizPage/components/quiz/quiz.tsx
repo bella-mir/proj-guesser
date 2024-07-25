@@ -15,22 +15,19 @@ import {
 import Slider, { SliderSingleProps } from "antd/es/slider";
 import styles from "./quiz.module.scss";
 import { useContext, useEffect, useMemo, useState } from "react";
-import { PROJECTIONS, TProj } from "../../../../components/map/map-constants";
+import { PROJECTIONS } from "../../../../components/map/map-constants";
 import { getAnswers, getRightAnswer } from "../../../../utils/shuffleArray";
 import { QuizContext } from "../../quizContext";
 import CheckCircleTwoTone from "@ant-design/icons/lib/icons/CheckCircleTwoTone";
 import Select from "antd/es/select";
 
 export const Quiz = () => {
-  const { setCurrentQuizProjection } = useContext(QuizContext);
+  const { setCurrentQuizProjection, projQuestions, setQuestions } =
+    useContext(QuizContext);
   const dispatch = useAppDispatch();
   const quizMode = useSelector(getQuizMode);
   const questionType = useSelector(getQuestionType);
   const questionNumber = useSelector(getQuestionNumber);
-
-  const [projQuestions, setQuestions] = useState<TProj[] | undefined>(
-    undefined
-  );
 
   const [projAnswers, setProjAnswers] = useState<string[] | undefined>(
     undefined
@@ -133,7 +130,7 @@ export const Quiz = () => {
     const randomKeys = shuffledKeys.slice(0, questionNumber);
     const randomProjections = randomKeys.map((key) => PROJECTIONS[key]);
     setQuestions(randomProjections as []);
-  }, [questionNumber]);
+  }, [questionNumber, setQuestions]);
 
   return (
     <>
@@ -181,6 +178,7 @@ export const Quiz = () => {
                 <Button
                   onClick={onButtonClickStart}
                   className={styles.startButton}
+                  type="primary"
                 >
                   Start
                 </Button>
@@ -253,7 +251,11 @@ export const Quiz = () => {
                   <span className={styles.score}>{scoreCount} </span>/{" "}
                   {questionNumber}
                 </span>
-                <Button onClick={onButtonClick} className={styles.buttonTry}>
+                <Button
+                  onClick={onButtonClick}
+                  className={styles.buttonTry}
+                  type="primary"
+                >
                   Try again
                 </Button>
               </div>

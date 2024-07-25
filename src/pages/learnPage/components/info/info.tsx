@@ -1,11 +1,7 @@
 import { useContext, useMemo } from "react";
 import styles from "./info.module.scss";
-import {
-  PROJECTIONS,
-  PROJECTIONS_PROPERTIES,
-  PROJECTION_TYPES,
-} from "../map/map-constants";
-import { LearnContext } from "../../pages/learnMode/learnContext";
+import { PROJECTIONS } from "../../../../components/map/map-constants";
+import { LearnContext } from "../../learnContext";
 
 export const Info = () => {
   const { currentProjection } = useContext(LearnContext);
@@ -23,7 +19,7 @@ export const Info = () => {
             {currentProjectionInfo.type}
           </span>
         </div>
-        <span>{PROJECTION_TYPES[currentProjectionInfo.type]}</span>
+        {/* <span>{PROJECTION_TYPES[currentProjectionInfo.type]}</span> */}
       </div>
       <div className={styles.block}>
         <div className={styles.blockHeader}>
@@ -32,7 +28,7 @@ export const Info = () => {
             {currentProjectionInfo.property}
           </span>
         </div>
-        <span>{PROJECTIONS_PROPERTIES[currentProjectionInfo.property]}</span>
+        {/* <span>{PROJECTIONS_PROPERTIES[currentProjectionInfo.property]}</span> */}
       </div>
     </div>
   );
