@@ -15,7 +15,6 @@ export const LearnPage = () => {
         value={{ currentProjection, setCurrentProjection }}
       >
         <div className={styles.page}>
-          <h1>map projections</h1>
           <Select
             options={PROJECTIONS_OPTIONS}
             defaultValue={currentProjection}

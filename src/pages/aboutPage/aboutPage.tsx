@@ -5,10 +5,6 @@ export const AboutPage = () => {
   return (
     <div className={styles.page}>
       <section className={styles.section__block}>
-        <h1 className={styles.page__title}>About</h1>
-      </section>
-
-      <section className={styles.section__block}>
         <span className={styles.section__title_2}>Project</span>
         <div className={styles.section__text}>
           <span>

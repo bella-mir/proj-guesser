@@ -6,7 +6,7 @@
 .section__block {
   display: flex;
   flex-direction: column;
-  padding: 48px 11.6% 0 11.6%;
+  padding: 48px 0 0;
   max-width: 984px;
   margin: 0 auto;
 }
@@ -76,8 +76,6 @@
   flex-direction: column;
   gap: 10px;
 }
-
-/* About Page */
 
 .author__image {
   border-radius: 50%;
