@@ -43,6 +43,12 @@ export const Quiz = () => {
     dispatch(setQuestionType(value));
   };
 
+  useEffect(() => {
+    return () => {
+      dispatch(setQuizMode("start"));
+    };
+  }, [dispatch]);
+
   const onButtonClick = () => {
     dispatch(setQuizMode("start"));
   };
