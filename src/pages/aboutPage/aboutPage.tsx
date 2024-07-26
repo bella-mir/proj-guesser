@@ -95,7 +95,7 @@ export const AboutPage = () => {
                 </a>
               </li>
               <li>
-                <a href="https://github.com/bella-mir" target="_blank">
+                <a href="https://t.me/GIS_PEACE" target="_blank">
                   GIS AND PEACE
                 </a>{" "}
                 Telegram Blog (in Russian)

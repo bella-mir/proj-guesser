@@ -86,3 +86,9 @@
 .author__separator {
   color: lightgray;
 }
+
+@media (max-width: 768px) {
+  .section__row {
+    flex-direction: column;
+  }
+}

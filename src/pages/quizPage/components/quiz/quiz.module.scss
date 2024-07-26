@@ -29,14 +29,6 @@
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    // .questionsScore {
-
-    // }
-
-    // .questionsCount {
-    //   align-self: end;
-    //   font: 8px;
-    // }
   }
 
   .questionsAnswers {
@@ -85,4 +77,11 @@
 
 .select {
   width: 160px;
+}
+
+@media (max-width: 1000px) {
+  .content {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
 }

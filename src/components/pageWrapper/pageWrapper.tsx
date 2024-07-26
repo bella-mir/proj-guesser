@@ -17,8 +17,7 @@ export const PageWrapper = ({ title, children, main }: PageWrapperProps) => {
         <h1 className={`${styles.title} ${main ? styles.titleCentered : ""}`}>
           {title}
         </h1>
-
-        <div className={styles.content}>{children}</div>
+        {children}
       </main>
       <Footer />
     </div>

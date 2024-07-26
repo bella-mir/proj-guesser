@@ -15,7 +15,7 @@ export const QuizPage = () => {
   );
   const quizMode = useSelector(getQuizMode);
   return (
-    <div className={styles.page}>
+    <>
       <QuizContext.Provider
         value={{
           currentQuizProjection,
@@ -35,6 +35,6 @@ export const QuizPage = () => {
           </div>
         </div>
       </QuizContext.Provider>
-    </div>
+    </>
   );
 };

@@ -14,7 +14,6 @@
   justify-content: center;
   overflow: hidden;
   gap: 20px;
-  width: 70vw;
 }
 
 .map {
@@ -37,6 +36,25 @@
   width: 520px;
 }
 
+@media (max-width: 768px) {
+  :global(.ant-select-single.ant-select-lg .ant-select-selector) {
+    font-size: 24px;
+  }
+
+  .selector {
+    width: 320px;
+  }
+}
+
+// @media (max-width: 576px) {
+//   :global(.ant-select-single.ant-select-lg .ant-select-selector) {
+//     font-size: 24px;
+//   }
+//   .selector {
+//     width: 400px;
+//   }
+// }
+
 :global(
     .ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector
   ) {
@@ -50,15 +68,6 @@
   ) {
   padding-right: 20px;
 }
-
-// :global(
-//     .ant-select-single.ant-select-lg.ant-select-show-arrow
-//       .ant-select-selection-item,
-//     .ant-select-single.ant-select-lg.ant-select-show-arrow
-//       .ant-select-selection-placeholder
-//   ) {
-//   padding-inline-end: 30px;
-// }
 
 :global(.ant-select .ant-select-arrow) {
   color: rgba(0, 0, 0, 1);

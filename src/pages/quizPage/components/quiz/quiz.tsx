@@ -11,7 +11,6 @@ import {
   setQuestionType,
   setQuizMode,
 } from "../../../../app/app-actions";
-// import Radio, { RadioChangeEvent } from "antd/es/radio";
 import Slider, { SliderSingleProps } from "antd/es/slider";
 import styles from "./quiz.module.scss";
 import { useContext, useEffect, useMemo, useState } from "react";
@@ -145,7 +144,7 @@ export const Quiz = () => {
           case "start":
             return (
               <div className={styles.quizStart}>
-                <strong>Customize Your Quiz</strong>
+                {/* <strong>Customize Your Quiz</strong> */}
                 <div className={styles.group}>
                   <span>Type of questions</span>
                   <Select
