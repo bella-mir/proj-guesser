@@ -85,3 +85,16 @@
     align-items: center;
   }
 }
+
+@media (max-width: 768px) {
+  .question {
+    font-size: 18px;
+  }
+  .quizQuestions {
+    .questionsAnswers {
+      .answersButton {
+        font-size: 14px;
+      }
+    }
+  }
+}

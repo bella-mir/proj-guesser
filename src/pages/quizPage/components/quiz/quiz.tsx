@@ -200,7 +200,7 @@ export const Quiz = () => {
                     Question {questionCount + 1}/{questionNumber}
                   </span>
                 </div>
-                <h2>
+                <h2 className={styles.question}>
                   &#x2190;
                   {questionType === "names"
                     ? "Projection Name..."
