@@ -64,9 +64,9 @@
   gap: 20px;
   align-self: center;
   .scoreResults {
-    font-size: 24px;
+    font-size: 32px;
     .score {
-      font-size: 44px;
+      font-size: 60px;
     }
   }
   .buttonTry {
@@ -94,6 +94,15 @@
     .questionsAnswers {
       .answersButton {
         font-size: 14px;
+      }
+    }
+  }
+
+  .quizEnd {
+    .scoreResults {
+      font-size: 24px;
+      .score {
+        font-size: 40px;
       }
     }
   }
