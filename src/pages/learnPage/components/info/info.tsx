@@ -19,7 +19,6 @@ export const Info = () => {
             {currentProjectionInfo.type}
           </span>
         </div>
-        {/* <span>{PROJECTION_TYPES[currentProjectionInfo.type]}</span> */}
       </div>
       <div className={styles.block}>
         <div className={styles.blockHeader}>
@@ -28,7 +27,6 @@ export const Info = () => {
             {currentProjectionInfo.property}
           </span>
         </div>
-        {/* <span>{PROJECTIONS_PROPERTIES[currentProjectionInfo.property]}</span> */}
       </div>
     </div>
   );

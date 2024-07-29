@@ -201,10 +201,9 @@ export const Quiz = () => {
                   </span>
                 </div>
                 <h2 className={styles.question}>
-                  &#x2190;
                   {questionType === "names"
-                    ? "Projection Name..."
-                    : "Projection Type and Property..."}
+                    ? "Projection Name"
+                    : "Projection Type and Property"}
                 </h2>
                 <div className={styles.questionsAnswers}>
                   {projQuestions &&

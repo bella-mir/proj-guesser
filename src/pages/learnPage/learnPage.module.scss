@@ -46,15 +46,6 @@
   }
 }
 
-// @media (max-width: 576px) {
-//   :global(.ant-select-single.ant-select-lg .ant-select-selector) {
-//     font-size: 24px;
-//   }
-//   .selector {
-//     width: 400px;
-//   }
-// }
-
 :global(
     .ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector
   ) {
@@ -71,4 +62,16 @@
 
 :global(.ant-select .ant-select-arrow) {
   color: rgba(0, 0, 0, 1);
+}
+
+:global(.ant-btn-link) {
+  color: #f17b35;
+}
+
+.arrows {
+  display: flex;
+  flex-direction: row;
+  // gap: 0.5rem;
+  justify-content: end;
+  width: 520px;
 }
