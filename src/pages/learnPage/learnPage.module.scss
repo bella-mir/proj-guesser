@@ -18,6 +18,10 @@
   gap: 1rem;
 }
 
+.description {
+  width: 70%;
+}
+
 .map {
   width: 100%;
   display: flex;
@@ -75,6 +79,9 @@
   }
   .info {
     text-align: center;
+    align-items: center;
+    font-size: 14px;
+    max-width: 80vw;
   }
 
   .radioGroup {

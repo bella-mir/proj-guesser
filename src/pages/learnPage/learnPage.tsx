@@ -196,7 +196,7 @@ export const LearnPage = () => {
             </Select>
           )}
 
-          <div>{description}</div>
+          <div className={styles.description}>{description}</div>
         </div>
 
         <div className={styles.map}>
