@@ -12,6 +12,10 @@ import {
   TProjProperty,
   TProjType,
 } from "../../components/map/map-constants";
+import {
+  projectionDescriptions,
+  projectionPropertyDescriptions,
+} from "./learnPage.constants";
 
 interface Projection {
   proj: string;
@@ -140,6 +144,14 @@ export const LearnPage = () => {
     }
   }, [currentProjection.proj, currentProjectionList]);
 
+  const description = useMemo(() => {
+    if (learnMode === "type") {
+      return projectionDescriptions[selectedType];
+    } else {
+      return projectionPropertyDescriptions[selectedProperty];
+    }
+  }, [learnMode, selectedProperty, selectedType]);
+
   return (
     <div className={styles.page}>
       <Radio.Group
@@ -183,6 +195,8 @@ export const LearnPage = () => {
               ))}
             </Select>
           )}
+
+          <div>{description}</div>
         </div>
 
         <div className={styles.map}>
