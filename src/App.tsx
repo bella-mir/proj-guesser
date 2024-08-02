@@ -1,6 +1,6 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { AboutPage, LearnPage, QuizPage } from "./pages";
+import { AboutPage, MainPage, QuizPage, LearnPage } from "./pages";
 import { PageWrapper } from "./components";
 
 function App() {
@@ -12,11 +12,15 @@ function App() {
             path="/"
             element={
               <PageWrapper
-                children={<LearnPage />}
+                children={<MainPage />}
                 title="Map Projections"
                 main
               />
             }
+          />
+          <Route
+            path="/learn"
+            element={<PageWrapper children={<LearnPage />} title="Learn" />}
           />
           <Route
             path="/quiz"

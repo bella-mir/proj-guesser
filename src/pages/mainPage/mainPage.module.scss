@@ -1,0 +1,97 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  overflow: hidden;
+  margin-top: 50px;
+}
+
+.content {
+  position: absolute;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  overflow: hidden;
+  gap: 20px;
+}
+
+.map {
+  width: 100%;
+}
+
+.info {
+  width: 40%;
+  height: 100%;
+}
+
+:global(.ant-select-single.ant-select-lg .ant-select-selector) {
+  font-size: 32px;
+  font-weight: 600;
+  font-family: Poppins;
+  color: #f17b35;
+}
+
+.selector {
+  width: 520px;
+}
+
+:global(
+    .ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector
+  ) {
+  border: none;
+  background-color: #d8e3f288;
+}
+
+:global(
+    .ant-select-single.ant-select-lg:not(.ant-select-customize-input)
+      .ant-select-selector
+  ) {
+  padding-right: 20px;
+}
+
+:global(.ant-select .ant-select-arrow) {
+  color: rgba(0, 0, 0, 1);
+}
+
+:global(.ant-btn-link) {
+  color: #f17b35;
+}
+
+.arrows {
+  display: flex;
+  flex-direction: row;
+  // gap: 0.5rem;
+  justify-content: end;
+  width: 520px;
+}
+
+@media (max-width: 768px) {
+  :global(.ant-select-single.ant-select-lg .ant-select-selector) {
+    font-size: 24px;
+  }
+
+  .selector {
+    width: 320px;
+  }
+
+  .arrows {
+    width: 320px;
+  }
+
+  .map {
+    svg {
+      height: 80%;
+      width: 80%;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .map {
+    svg {
+      height: 70%;
+      width: 70%;
+    }
+  }
+}

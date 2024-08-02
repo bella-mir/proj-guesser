@@ -16,9 +16,25 @@
   width: 40%;
 }
 
+.map {
+  width: 100%;
+}
+
 @media (max-width: 1000px) {
   .content {
     flex-direction: column-reverse;
     align-items: center;
+  }
+  .quiz {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .map {
+    svg {
+      height: 80%;
+      width: 80%;
+    }
   }
 }

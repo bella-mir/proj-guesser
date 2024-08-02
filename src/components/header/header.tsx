@@ -13,6 +13,14 @@ export const Header = () => {
                 to="/"
                 className={({ isActive }) => (isActive ? styles.active : "")}
               >
+                main
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/learn"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
                 learn
               </NavLink>
             </li>
