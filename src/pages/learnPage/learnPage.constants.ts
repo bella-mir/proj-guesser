@@ -21,6 +21,7 @@ export const projectionDescriptions: Record<TProjType, string> = {
     "Polyconic projections use a series of cones, each touching the Earth's surface at different latitudes. These projections more accurately represent small areas but are not suitable for global maps.",
   // Trimetric:
   //   "Trimetric projections use three different scales on three different axes. These projections are rarely used and typically applied in specialized cartographic tasks.",
+  "Modified azimuthal": "",
   Other:
     "This category includes projections that do not fit into the standard types. These projections may be experimental or adapted for specific needs.",
 };
