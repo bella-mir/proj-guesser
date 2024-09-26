@@ -331,8 +331,8 @@ export const PROJECTIONS: IProjectionCollection = {
     id: "gingery",
     name: "Gingery",
     projection: d3proj.geoGingery().scale(70),
-    type: "Azimuthal",
-    property: "Equidistant",
+    type: "Modified azimuthal",
+    property: "Other",
   },
   ginzburg4: {
     id: "ginzburg4",
@@ -408,7 +408,7 @@ export const PROJECTIONS: IProjectionCollection = {
     id: "hill",
     name: "Hill",
     projection: d3proj.geoHill().scale(100),
-    type: "Pseudoconical",
+    type: "Other",
     property: "Equal-area",
   },
   homolosine: {
@@ -555,7 +555,7 @@ export const PROJECTIONS: IProjectionCollection = {
     id: "nicolosi",
     name: "Nicolosi",
     projection: d3proj.geoNicolosi().scale(80),
-    type: "Pseudoconical",
+    type: "Other",
     property: "Compromise",
   },
   patterson: {
