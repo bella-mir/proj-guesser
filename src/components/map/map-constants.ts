@@ -23,6 +23,7 @@ export type TProjProperty =
   | "Perspective"
   | "Conformal"
   | "Conformal and Perspective"
+  | "Equal-area and Perspective"
   | "Compromise"
   | "Other";
 
@@ -247,14 +248,14 @@ export const PROJECTIONS: IProjectionCollection = {
     name: "CylindricalEqualArea",
     projection: d3proj.geoCylindricalEqualArea().scale(120),
     type: "Cylindrical",
-    property: "Equal-area",
+    property: "Equal-area and Perspective",
   },
   cylindricalstereographic: {
     id: "cylindricalstereographic",
-    name: "CylindricalStereographic",
+    name: "CylindricalStereographic(Gall)",
     projection: d3proj.geoCylindricalStereographic().scale(100),
     type: "Cylindrical",
-    property: "Conformal",
+    property: "Compromise",
   },
   eckert1: {
     id: "eckert1",
@@ -699,6 +700,8 @@ export const PROJECTIONS_PROPERTIES: { [K in TProjProperty]: string } = {
   Conformal: "Preserves local shapes or angles.",
   "Conformal and Perspective":
     "Preserves local shapes or angles and simulates a three-dimensional perspective view of the Earth's surface.",
+  "Equal-area and Perspective":
+    "Preserves relative sizes of areas on the map and Simulates a three-dimensional perspective view of the Earth's surface.",
   Compromise:
     "Aims to balance various properties such as area, distance, and shape distortion.",
   Other:

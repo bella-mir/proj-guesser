@@ -39,6 +39,8 @@ export const projectionPropertyDescriptions: Record<TProjProperty, string> = {
     "Conformal projections preserve local shapes and angles, making them ideal for navigation and topographic maps. However, they can significantly distort areas, especially over large regions. Perspective projections depict the Earth's surface as it would appear from a specific vantage point, such as from space. These projections provide a realistic view but are not suitable for accurate measurements.",
   Compromise:
     "Compromise projections aim to minimize distortion in shape, area, and distance, without perfectly preserving any of these properties. These projections provide a balanced view, making them suitable for general-purpose world maps.",
+  "Equal-area and Perspective":
+    "Equal-area projections preserve the area of displayed features. This means that the size of any area on the map is proportional to its actual size on the Earth. These projections are useful for statistical and thematic maps. Perspective projections depict the Earth's surface as it would appear from a specific vantage point, such as from space. These projections provide a realistic view but are not suitable for accurate measurements.",
   Other:
     "This category includes projections that do not fit into the standard types. These projections may be experimental or adapted for specific needs.",
 };
