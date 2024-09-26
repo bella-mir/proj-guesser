@@ -19,8 +19,8 @@ export const projectionDescriptions: Record<TProjType, string> = {
     "Lenticular projections create a map that resembles a lens or sphere. They use a combination of various projection methods to minimize shape and area distortions.",
   Polyconic:
     "Polyconic projections use a series of cones, each touching the Earth's surface at different latitudes. These projections more accurately represent small areas but are not suitable for global maps.",
-  Trimetric:
-    "Trimetric projections use three different scales on three different axes. These projections are rarely used and typically applied in specialized cartographic tasks.",
+  // Trimetric:
+  //   "Trimetric projections use three different scales on three different axes. These projections are rarely used and typically applied in specialized cartographic tasks.",
   Other:
     "This category includes projections that do not fit into the standard types. These projections may be experimental or adapted for specific needs.",
 };
@@ -34,10 +34,10 @@ export const projectionPropertyDescriptions: Record<TProjProperty, string> = {
     "Perspective projections depict the Earth's surface as it would appear from a specific vantage point, such as from space. These projections provide a realistic view but are not suitable for accurate measurements.",
   Conformal:
     "Conformal projections preserve local shapes and angles, making them ideal for navigation and topographic maps. However, they can significantly distort areas, especially over large regions.",
+  "Conformal and Perspective":
+    "Conformal projections preserve local shapes and angles, making them ideal for navigation and topographic maps. However, they can significantly distort areas, especially over large regions. Perspective projections depict the Earth's surface as it would appear from a specific vantage point, such as from space. These projections provide a realistic view but are not suitable for accurate measurements.",
   Compromise:
     "Compromise projections aim to minimize distortion in shape, area, and distance, without perfectly preserving any of these properties. These projections provide a balanced view, making them suitable for general-purpose world maps.",
-  Gnomonic:
-    "Gnomonic projections map the surface of a sphere from the perspective of the sphere's center. They are useful for navigation because all great circles (shortest paths between points) appear as straight lines.",
   Other:
     "This category includes projections that do not fit into the standard types. These projections may be experimental or adapted for specific needs.",
 };

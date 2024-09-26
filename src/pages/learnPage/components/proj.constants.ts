@@ -13,7 +13,7 @@ export const projectionTypes: TProjType[] = [
   "Retroazimuthal",
   "Lenticular",
   "Polyconic",
-  "Trimetric",
+  // "Trimetric",
   "Other",
 ];
 
@@ -23,6 +23,5 @@ export const projectionProperties: TProjProperty[] = [
   "Perspective",
   "Conformal",
   "Compromise",
-  "Gnomonic",
   "Other",
 ];

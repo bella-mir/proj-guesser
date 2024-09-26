@@ -11,9 +11,10 @@ export type TProjType =
   | "Cylindrical"
   | "Pseudoazimuthal"
   | "Retroazimuthal"
+  | "Modified azimuthal"
   | "Lenticular"
   | "Polyconic"
-  | "Trimetric"
+  // | "Trimetric"
   | "Other";
 
 export type TProjProperty =
@@ -21,8 +22,8 @@ export type TProjProperty =
   | "Equidistant"
   | "Perspective"
   | "Conformal"
+  | "Conformal and Perspective"
   | "Compromise"
-  | "Gnomonic"
   | "Other";
 
 export type TProj = {
@@ -57,7 +58,7 @@ export const PROJECTIONS: IProjectionCollection = {
     name: "Gnomonic",
     projection: d3.geoGnomonic().scale(110),
     type: "Azimuthal",
-    property: "Gnomonic",
+    property: "Perspective",
   },
   orthographic: {
     id: "orthographic",
@@ -71,7 +72,7 @@ export const PROJECTIONS: IProjectionCollection = {
     name: "Stereographic",
     projection: d3.geoStereographic().scale(70),
     type: "Azimuthal",
-    property: "Conformal",
+    property: "Conformal and Perspective",
   },
   equalearth: {
     id: "equalearth",
@@ -147,7 +148,7 @@ export const PROJECTIONS: IProjectionCollection = {
     id: "aitoff",
     name: "Aitoff",
     projection: d3proj.geoAitoff().scale(85),
-    type: "Pseudoazimuthal",
+    type: "Lenticular",
     property: "Compromise",
   },
   armadillo: {
@@ -175,7 +176,7 @@ export const PROJECTIONS: IProjectionCollection = {
     id: "berghaus",
     name: "Berghaus",
     projection: d3proj.geoBerghaus().scale(70),
-    type: "Azimuthal",
+    type: "Modified azimuthal",
     property: "Equidistant",
   },
   bertin1953: {
@@ -217,7 +218,7 @@ export const PROJECTIONS: IProjectionCollection = {
     id: "chamberlinafrica",
     name: "Chamberlin Africa",
     projection: d3proj.geoChamberlinAfrica().scale(120),
-    type: "Trimetric",
+    type: "Modified azimuthal",
     property: "Other",
   },
   collignon: {
@@ -231,7 +232,7 @@ export const PROJECTIONS: IProjectionCollection = {
     id: "craig",
     name: "Craig",
     projection: d3proj.geoCraig().scale(150),
-    type: "Retroazimuthal",
+    type: "Modified azimuthal",
     property: "Compromise",
   },
   craster: {
@@ -385,14 +386,14 @@ export const PROJECTIONS: IProjectionCollection = {
     id: "hammer",
     name: "Hammer",
     projection: d3proj.geoHammer().scale(95),
-    type: "Pseudoazimuthal",
+    type: "Lenticular",
     property: "Equal-area",
   },
   hammerretroazimuthal: {
     id: "hammerretroazimuthal",
     name: "Hammer Retroazimuthal",
     projection: d3proj.geoHammerRetroazimuthal().scale(90),
-    type: "Retroazimuthal",
+    type: "Modified azimuthal",
     property: "Other",
   },
   healpix: {
@@ -441,7 +442,7 @@ export const PROJECTIONS: IProjectionCollection = {
     id: "lagrange",
     name: "Lagrange",
     projection: d3proj.geoLagrange().scale(100),
-    type: "Other",
+    type: "Polyconic",
     property: "Conformal",
   },
   larrivee: {
@@ -472,39 +473,39 @@ export const PROJECTIONS: IProjectionCollection = {
     type: "Cylindrical",
     property: "Compromise",
   },
-  modifiedstereographicalaska: {
-    id: "modifiedstereographicalaska",
-    name: "Modified Stereographic Alaska",
-    projection: d3proj.geoModifiedStereographicAlaska().scale(300),
-    type: "Azimuthal",
-    property: "Conformal",
-  },
-  modifiedstereographicgs48: {
-    id: "modifiedstereographicgs48",
-    name: "Modified Stereographic Gs48",
-    projection: d3proj.geoModifiedStereographicGs48().scale(160),
-    type: "Azimuthal",
-    property: "Conformal",
-  },
-  modifiedstereographicgs50: {
-    id: "modifiedstereographicgs50",
-    name: "Modified Stereographic Gs50",
-    projection: d3proj.geoModifiedStereographicGs50().scale(100),
-    type: "Azimuthal",
-    property: "Conformal",
-  },
+  // modifiedstereographicalaska: {
+  //   id: "modifiedstereographicalaska",
+  //   name: "Modified Stereographic Alaska",
+  //   projection: d3proj.geoModifiedStereographicAlaska().scale(300),
+  //   type: "Azimuthal",
+  //   property: "Conformal",
+  // },
+  // modifiedstereographicgs48: {
+  //   id: "modifiedstereographicgs48",
+  //   name: "Modified Stereographic Gs48",
+  //   projection: d3proj.geoModifiedStereographicGs48().scale(160),
+  //   type: "Azimuthal",
+  //   property: "Conformal",
+  // },
+  // modifiedstereographicgs50: {
+  //   id: "modifiedstereographicgs50",
+  //   name: "Modified Stereographic Gs50",
+  //   projection: d3proj.geoModifiedStereographicGs50().scale(100),
+  //   type: "Azimuthal",
+  //   property: "Conformal",
+  // },
   modifiedstereographicmiller: {
     id: "modifiedstereographicmiller",
     name: "Modified Stereographic Miller",
     projection: d3proj.geoModifiedStereographicMiller().scale(130),
-    type: "Azimuthal",
+    type: "Modified azimuthal",
     property: "Conformal",
   },
   modifiedstereographiclee: {
     id: "modifiedstereographiclee",
     name: "Modified Stereographic Lee",
     projection: d3proj.geoModifiedStereographicLee().scale(50),
-    type: "Azimuthal",
+    type: "Modified azimuthal",
     property: "Conformal",
   },
   mollweide: {
@@ -588,8 +589,8 @@ export const PROJECTIONS: IProjectionCollection = {
     id: "satellite",
     name: "Satellite",
     projection: d3proj.geoSatellite().scale(300),
-    type: "Other",
-    property: "Other",
+    type: "Azimuthal",
+    property: "Perspective",
   },
   sinusoidal: {
     id: "sinusoidal",
@@ -612,18 +613,18 @@ export const PROJECTIONS: IProjectionCollection = {
     type: "Pseudocylindrical",
     property: "Compromise",
   },
-  twopointazimuthalusa: {
-    id: "twopointazimuthalusa",
-    name: "Two Point Azimuthal Usa",
-    projection: d3proj.geoTwoPointAzimuthalUsa().scale(100),
-    type: "Azimuthal",
-    property: "Equidistant",
-  },
+  // twopointazimuthalusa: {
+  //   id: "twopointazimuthalusa",
+  //   name: "Two Point Azimuthal Usa",
+  //   projection: d3proj.geoTwoPointAzimuthalUsa().scale(100),
+  //   type: "Azimuthal",
+  //   property: "Equidistant",
+  // },
   vandergrinten2: {
     id: "vandergrinten2",
     name: "Van Der Grinten 2",
     projection: d3proj.geoVanDerGrinten2().scale(60),
-    type: "Other",
+    type: "Polyconic",
     property: "Compromise",
   },
   vandergrinten3: {
@@ -635,23 +636,23 @@ export const PROJECTIONS: IProjectionCollection = {
   },
   wagner: {
     id: "wagner",
-    name: "Wagner",
+    name: "Wagner VII",
     projection: d3proj.geoWagner().scale(95),
-    type: "Azimuthal",
-    property: "Equidistant",
+    type: "Modified azimuthal",
+    property: "Equal-area",
   },
   wiechel: {
     id: "wiechel",
     name: "Wiechel",
     projection: d3proj.geoWiechel().scale(100),
-    type: "Azimuthal",
-    property: "Equidistant",
+    type: "Modified azimuthal",
+    property: "Equal-area",
   },
   winkel3: {
     id: "winkel3",
-    name: "Winkel3",
+    name: "Winkel Tripel",
     projection: d3proj.geoWinkel3().scale(100),
-    type: "Pseudoazimuthal",
+    type: "Lenticular",
     property: "Compromise",
   },
 };
@@ -662,21 +663,6 @@ export const PROJECTIONS_OPTIONS = Object.entries(PROJECTIONS).map(
     value: key,
   })
 );
-
-// export const PROJECTION_TYPES: { [K in TProjType]: string } = {
-//   Azimuthal:
-//     "Azimuthal projections maintain accurate directionality from the center point of the projection. They are commonly used for maps centered on a specific location, such as polar maps or maps centered on a specific country or continent.",
-//   Pseudocylindrical:
-//     "Pseudocylindrical projections preserve either area or distance along the equator while distorting both as you move away from it. They are often used for world maps where accurate representation of areas is desired.",
-//   Conic:
-//     "Conic projections are made by placing a cone over the Earth and projecting the surface onto it. They are particularly useful for mapping mid-latitude regions with minimal distortion.",
-//   Cylindrical:
-//     "Cylindrical projections project the Earth's surface onto a cylinder. They are commonly used for world maps because they result in straight, horizontal lines of latitude and longitude.",
-//   Pseudoazimuthal:
-//     "Pseudoazimuthal projections maintain accurate directionality from one or two points on the map. They are often used for maps of large regions or continents.",
-//   Other:
-//     "This category includes projections that do not fit neatly into any of other categories or have unique properties.",
-// };
 
 export const PROJECTION_TYPES: { [K in TProjType]: string } = {
   Azimuthal:
@@ -695,10 +681,11 @@ export const PROJECTION_TYPES: { [K in TProjType]: string } = {
     "Retroazimuthal projections preserve accurate directionality from one or more selected points to all other points on the map. They are commonly used for navigational and military purposes.",
   Lenticular:
     "Lenticular projections are a type of pseudocylindrical projection that seeks to minimize distortion across the map by curving the meridians and parallels.",
+  "Modified azimuthal": "",
   Polyconic:
     "Polyconic projections are characterized by straight meridians and curved parallels. They are commonly used for mapping large regions or countries with significant east-west extent.",
-  Trimetric:
-    "Trimetric projections are a type of trimetric projection characterized by the use of three different scales for the three principal directions. They are often used for specialized mapping purposes where specific areas or features require accurate representation.",
+  // Trimetric:
+  //   "Trimetric projections are a type of trimetric projection characterized by the use of three different scales for the three principal directions. They are often used for specialized mapping purposes where specific areas or features require accurate representation.",
   Other:
     "This category includes projections that do not fit neatly into any of other categories or have unique properties.",
 };
@@ -710,10 +697,10 @@ export const PROJECTIONS_PROPERTIES: { [K in TProjProperty]: string } = {
   Perspective:
     "Simulates a three-dimensional perspective view of the Earth's surface.",
   Conformal: "Preserves local shapes or angles.",
+  "Conformal and Perspective":
+    "Preserves local shapes or angles and simulates a three-dimensional perspective view of the Earth's surface.",
   Compromise:
     "Aims to balance various properties such as area, distance, and shape distortion.",
-  Gnomonic:
-    "The Gnomonic projection projects the Earth's surface onto a tangent plane from a single point, typically the center of the Earth. It is known for preserving great circles as straight lines, making it useful for navigational purposes but resulting in significant distortion away from the center point.",
   Other:
     "Projections that don't fall into the above categories or have unique characteristics.",
 };
