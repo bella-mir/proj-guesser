@@ -4,10 +4,10 @@ import { PROJECTIONS } from "./map-constants";
 import landData from "../../data/land.json";
 
 export const Carto = ({
-  currentProjection,
+  currentProjection = "bonne",
   scale = 1,
 }: {
-  currentProjection: string;
+  currentProjection?: string;
   scale?: number;
 }) => {
   const projGeo = useMemo(() => {

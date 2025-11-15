@@ -40,6 +40,14 @@ export const Header = () => {
                 about
               </NavLink>
             </li>
+            <li>
+              {/* <NavLink
+                to="/carousel"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                carousel
+              </NavLink> */}
+            </li>
           </ul>
         </nav>
       </header>

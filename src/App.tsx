@@ -1,6 +1,12 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { AboutPage, MainPage, QuizPage, LearnPage } from "./pages";
+import {
+  AboutPage,
+  MainPage,
+  QuizPage,
+  LearnPage,
+  // CarouselPage,
+} from "./pages";
 import { PageWrapper } from "./components";
 
 function App() {
@@ -30,6 +36,12 @@ function App() {
             path="/about"
             element={<PageWrapper children={<AboutPage />} title="About" />}
           />
+          {/* <Route
+            path="/carousel"
+            element={
+              <PageWrapper children={<CarouselPage />} title="Carousel" />
+            }
+          /> */}
         </Routes>
       </HashRouter>
     </div>
