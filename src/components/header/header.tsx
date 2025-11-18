@@ -18,10 +18,10 @@ export const Header = () => {
             </li>
             <li>
               <NavLink
-                to="/learn"
+                to="/explore"
                 className={({ isActive }) => (isActive ? styles.active : "")}
               >
-                learn
+                explore
               </NavLink>
             </li>
             <li>

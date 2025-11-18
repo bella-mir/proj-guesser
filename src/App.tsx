@@ -25,8 +25,8 @@ function App() {
             }
           />
           <Route
-            path="/learn"
-            element={<PageWrapper children={<LearnPage />} title="Learn" />}
+            path="/explore"
+            element={<PageWrapper children={<LearnPage />} title="Explore" />}
           />
           <Route
             path="/quiz"
