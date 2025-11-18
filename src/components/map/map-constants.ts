@@ -658,12 +658,12 @@ export const PROJECTIONS: IProjectionCollection = {
   },
 };
 
-export const PROJECTIONS_OPTIONS = Object.entries(PROJECTIONS).map(
-  ([key, projection]) => ({
+export const PROJECTIONS_OPTIONS = Object.entries(PROJECTIONS)
+  .map(([key, projection]) => ({
     label: projection.name,
     value: key,
-  })
-);
+  }))
+  .sort((a, b) => a.label.localeCompare(b.label));
 
 export const PROJECTION_TYPES: { [K in TProjType]: string } = {
   Azimuthal:

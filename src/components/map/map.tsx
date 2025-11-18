@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useId, useMemo } from "react";
 import { geoPath, geoGraticule } from "d3-geo";
 import { PROJECTIONS } from "./map-constants";
 import landData from "../../data/land.json";
@@ -21,8 +21,12 @@ export const Carto = ({
   const graticule = geoGraticule();
 
   const svgStyle = {
-    verticalAlign: "top", // Align elements to the top
+    verticalAlign: "top",
+    // transform: `scale(${1 / scale})`,
+    transformOrigin: "0 0",
   };
+
+  const clipPathId = useId();
 
   return (
     <>
@@ -33,38 +37,42 @@ export const Carto = ({
         preserveAspectRatio="xMidYMid meet"
         style={svgStyle}
       >
-        <clipPath id={"clipPathId"}>
+        <g transform={`scale(${1 / scale})`}>
+          <clipPath id={clipPathId}>
+            <path
+              //@ts-expect-error: type error
+              d={pathGenerator({ type: "Sphere" })}
+            />
+          </clipPath>
+          <rect
+            x={0}
+            y={0}
+            width={width * scale}
+            height={height * scale}
+            // fill="#D8DCF2"
+            fill="#D8E1F2"
+            clipPath={`url(#${clipPathId})`}
+          />
           <path
             //@ts-expect-error: type error
-            d={pathGenerator({ type: "Sphere" })}
+            d={pathGenerator(graticule())}
+            fill="none"
+            stroke="white"
+            strokeWidth={0.5}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            clipPath={`url(#${clipPathId})`}
           />
-        </clipPath>
-        <rect
-          x={0}
-          y={0}
-          width={width}
-          height={height}
-          fill="#D8E3F2"
-          clipPath="url(#clipPathId)"
-        />
-        <path
-          //@ts-expect-error: type error
-          d={pathGenerator(graticule())}
-          fill="none"
-          stroke="#ccc"
-          strokeWidth={0.5}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          clipPath="url(#clipPathId)"
-        />
-        <path
-          //@ts-expect-error: type error
-          d={pathGenerator(landData)}
-          fill="#2D4B73"
-          stroke="white"
-          strokeWidth={0.2}
-          clipPath="url(#clipPathId)"
-        />
+          <path
+            //@ts-expect-error: type error
+            d={pathGenerator(landData)}
+            // fill="#454F8C"
+            fill="#455F8C"
+            stroke="white"
+            strokeWidth={0.2}
+            clipPath={`url(#${clipPathId})`}
+          />
+        </g>
       </svg>
     </>
   );

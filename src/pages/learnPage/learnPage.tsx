@@ -226,12 +226,14 @@ export const LearnPage = () => {
               icon={<LeftCircleOutlined />}
               onClick={onLeftClick}
               disabled={leftDisabled}
+              size="large"
             ></Button>
             <Button
               type="link"
               icon={<RightCircleOutlined />}
               onClick={onRightClick}
               disabled={rightDisabled}
+              size="large"
             ></Button>
           </div>
         </div>

@@ -5,6 +5,7 @@ import {
   MainPage,
   QuizPage,
   LearnPage,
+  CarouselPage,
   // CarouselPage,
 } from "./pages";
 import { PageWrapper } from "./components";
@@ -36,12 +37,12 @@ function App() {
             path="/about"
             element={<PageWrapper children={<AboutPage />} title="About" />}
           />
-          {/* <Route
-            path="/carousel"
+          <Route
+            path="/all"
             element={
               <PageWrapper children={<CarouselPage />} title="Carousel" />
             }
-          /> */}
+          />
         </Routes>
       </HashRouter>
     </div>

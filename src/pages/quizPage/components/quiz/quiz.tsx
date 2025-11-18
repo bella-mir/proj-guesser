@@ -218,8 +218,8 @@ export const Quiz = () => {
                               clickedButton === name && name === rightAnswer
                                 ? "#00A6A6"
                                 : clickedButton === name && name !== rightAnswer
-                                ? "#F21F44"
-                                : "#F1BE20",
+                                ? "#A62000"
+                                : "#F2ACCD",
                             // border:
                             //   clickedButton &&
                             //   clickedButton !== name &&

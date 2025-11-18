@@ -73,7 +73,7 @@ export const AboutPage = () => {
             <ul>
               <li>GIS analyst and Web-GIS developer</li>
               <li>
-                Student{" "}
+                Alumna{" "}
                 <a
                   href="https://cartographymaster.eu"
                   target="_blank"

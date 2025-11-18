@@ -1,0 +1,30 @@
+.page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  .projectionContainer {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    align-items: left;
+    overflow: hidden;
+    .projectionTitle {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .projectionMap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 200px;
+      svg {
+        align-items: center;
+        height: 100%;
+        object-fit: contain; // сохраняет пропорции
+      }
+    }
+  }
+}

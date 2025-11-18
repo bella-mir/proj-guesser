@@ -5,7 +5,8 @@
   line-height: 1.5;
   font-weight: 400;
   color: #213547;
-  background-color: #ffffff;
+  /* background-color: #f7f5f2; */
+  /* background-color: #f2f0ef; */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -14,12 +15,12 @@
 
 a {
   text-decoration: none;
-  color: #f24194;
+  color: #454f8c;
   transition: background-color 0.3s ease;
 }
 
 a:hover {
-  color: #bf8d30;
+  color: #c0ccff;
 }
 
 body {
@@ -31,7 +32,7 @@ body {
 }
 
 h1 {
-  color: #00a6a6;
+  color: #5559d4;
   font-size: 3.2em;
   line-height: 1.1;
 }
